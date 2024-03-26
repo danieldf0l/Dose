@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/fonts.css" rel="stylesheet">
+    <link href="./styles/media.css" rel="stylesheet">
+    <title>Registrar Funcionário</title>
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>Taverna</h1>
+            <h1>do Vale</h1>
+        </div>
+        
+        <ul>
+            <a href="./estoque.html"><li>Estoque</li></a>
+            <a href="./vendas.html"><li>Vendas</li></a>
+            <a href="produtos.html"><li>Produtos</li></a>
+            <a href="./funcionario.html"><li>Funcionário</li></a>
+            <a href="index.html" class="incio-btn"><li>Início</li></a>
+        </ul>
+    </header>
+
+    <aside>
+        <h2><span>Registrar</span></h2>
+        <h2>Funcionários</h2>
+        <p>Na página de Funcionários do nosso site, você encontrará campos simples para facilitar seu registro:
+            Preencha o Nome do Funcionário, insira o cargo atribuído (Gerente, Caixa, Atendente, Faxineiro) e inserindo o
+            horáiro de entrada e saída definido. Depois, clique em "Salvar" para que sua venda seja cadastrada.</p>
+        <form class="duplas">
+            <div class="input-topo">
+                <label for="nome-funcionario">Nome Funcionário</label>
+                <input type="text" id="nome-funcionario" name="nome-funcionario" placeholder="Nome Funcionário" required>
+                <label for="horario-entrada">Entrada</label>
+                <input type="time" id="horario-entrada" name="horario-entrada" placeholder="Horário Entrada" required>
+            </div>
+            <div class="input-baixo">
+                <label for="cargo-funcionario">Cargo Funcionário</label>
+                <input type="text" id="cargo-funcionario" name="cargo-funcionario" placeholder="Gerente/Caixa/Faxineiro/Atendente" required>
+                <label for="horario-saida">Saída</label>
+                <input type="time" id="horario-saida" name="horario-saida" placeholder="Horário Saída" required>
+                <button type="submit" required>Salvar</button>
+            </div>
+        </form>
+    </aside>
+    
+    <footer></footer>
+</body>
+</html>

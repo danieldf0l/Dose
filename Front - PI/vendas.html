@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/fonts.css" rel="stylesheet">
+    <link href="./styles/media.css" rel="stylesheet">
+    <title>Registrar Vendas</title>
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>Taverna</h1>
+            <h1>do Vale</h1>
+        </div>
+        
+        <ul>
+          <a href="./estoque.html"><li>Estoque</li></a>
+          <a href="./vendas.html"><li>Vendas</li></a>
+          <a href="produtos.html"><li>Produtos</li></a>
+          <a href="./funcionario.html"><li>Funcionário</li></a>
+            <a href="index.html" class="incio-btn"><li>Início</li></a>
+        </ul>
+    </header>
+    <aside>
+        <h2><span>Registrar</span></h2>
+        <h2>Vendas</h2>
+        <p>Na página de Vendas do nosso site, você encontrará campos simples para facilitar seu registro:
+          Preencha o Valor Parcial do produto, insira o Valor Final, escolha a forma de pagamento efetuada (Pix, Dinheiro, Crédito, Débito) e indique a data da venda.
+          Depois, clique em "Salvar" para que sua venda seja cadastrada.</p>
+        <form class="duplas_vendas">
+          <div class="input-topo">
+            <label for="valor-parcial">Valor Parcial</label>
+            <input type="text" id="valor-parcial" name="valor-parcial" placeholder="R$ 100,00" required>
+            <label for="valor-final">Valor Final</label>
+            <input type="text" id="valor-final" name="valor-final" placeholder="R$ 100,00" required>
+          </div>
+          <div class="input-baixo">
+            <label for="forma-pagamento">Forma de Pagamento</label>
+            <input type="text" id="forma-pagamento" name="forma-pagamento" placeholder="Dinheiro/Pix/Credito/Debito" required>
+            <label for="data">Data</label>
+            <input type="date" id="data_venda" name="data_venda" placeholder="dd/mm/aaaa" required>
+            <button type="submit" required>Salvar</button>
+          </div>
+        </form>
+        </aside>
+        <footer></footer>
+        </body>
+        
+        </html>

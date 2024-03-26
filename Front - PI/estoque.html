@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/fonts.css" rel="stylesheet">
+    <link href="./styles/media.css" rel="stylesheet">
+    <title>Cadastrar Estoque</title>
+</head>
+<body>
+    <header>
+        <div id="title">
+            <h1>Taverna</h1>
+            <h1>do Vale</h1>
+        </div>
+        
+        <ul>
+          <a href="./estoque.html"><li>Estoque</li></a>
+          <a href="./vendas.html"><li>Vendas</li></a>
+          <a href="produtos.html"><li>Produtos</li></a>
+          <a href="./funcionario.html"><li>Funcionário</li></a>
+            <a href="index.html" class="incio-btn"><li>Início</li></a>
+        </ul>
+    </header>
+    <aside>
+        <h2><span>Cadastrar</span></h2>
+        <h2>Estosque</h2>
+        <p>Na página de Estoque do nosso site, você encontrará campos simples para facilitar seu registro:
+          Preencha o ID do produto, insira a quantidade, insira a data de validade e indique o lote do produto.
+          Depois, clique em "Salvar" para que seu estoque seja cadastrado.</p>
+        <form class="duplas_vendas">
+          <div class="input-topo">
+            <label for="codigo-estoque">Código</label>
+            <input type="text" id="codigo-estoque" name="codigo-estoque" placeholder="ID do Produto" required>
+            <label for="quatidade-estoque">Quantidade</label>
+            <input type="text" id="quatidade-estoque" name="quatidade-estoque" placeholder="Und." required>
+          </div>
+          <div class="input-baixo">
+            <label for="data-estoque">Data de Validade</label>
+            <input type="date" id="data-estoque" name="data-estoque" placeholder="dd/mm/aaaa" required>
+            <label for="lote-estoque">Lote</label>
+            <input type="text" id="lote-estoque" name="lote-estoque" placeholder="Nº do Lote/Texto" required>
+            <button type="submit" required>Salvar</button>
+          </div>
+        </form>
+        </aside>
+        <footer></footer>
+        </body>
+        
+        </html>
