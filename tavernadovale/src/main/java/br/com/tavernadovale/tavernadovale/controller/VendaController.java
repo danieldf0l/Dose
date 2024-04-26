@@ -10,6 +10,6 @@ public class VendaController {
 
     @GetMapping("/venda")
     public String texto(){
-        return "Hello World";
+        return "Hello World, venda";
     }
 }

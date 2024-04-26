@@ -10,6 +10,6 @@ public class FuncionarioController {
 
     @GetMapping("/funcionario")
     public String texto(){
-        return "Hello World";
+        return "Hello World, funcionario";
     }
 }

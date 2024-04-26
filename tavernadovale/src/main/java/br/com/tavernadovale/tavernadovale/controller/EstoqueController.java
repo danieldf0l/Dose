@@ -10,6 +10,6 @@ public class EstoqueController {
     
     @GetMapping("/estoque")
     public String texto(){
-        return "Hello World";
+        return "Hello World, estoque";
     }
 }
