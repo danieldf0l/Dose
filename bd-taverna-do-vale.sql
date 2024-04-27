@@ -137,7 +137,7 @@ CREATE TABLE `venda` (
   `valor_parcial` double NOT NULL,
   `valor_final` double NOT NULL,
   `forma_pagamento` enum('Dinheiro','Pix','Crédito','Débito') NOT NULL,
-  `data_venda` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `data_venda` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_venda`),
   UNIQUE KEY `id_venda` (`id_venda`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

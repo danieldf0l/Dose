@@ -13,56 +13,58 @@ public class Produto {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_produto")
-    int id_produtoInt;
+    @Column(name = "id_produto", nullable = true)
+    int id_produto;
     
+    @Column(name = "nome_produto", length = 45, nullable = true)
+    String nome_produto;
     
-    String nome_produtoString;
+    @Column(name = "valor_produto", nullable = true)
+    Float valor_produto;
     
-    
-    Float valor_produtoFloat;
-    
-    
-    String tipoString;
+    @SuppressWarnings("rawtypes")
+    @Column(name = "tipo_produto", nullable = true)
+    Enum tipo_produto;
 
 
-    public int getId_produtoInt() {
-        return id_produtoInt;
+    public int getId_produto() {
+        return id_produto;
     }
 
 
-    public void setId_produtoInt(int id_produtoInt) {
-        this.id_produtoInt = id_produtoInt;
+    public void setId_produto(int id_produto) {
+        this.id_produto = id_produto;
     }
 
 
-    public String getNome_produtoString() {
-        return nome_produtoString;
+    public String getNome_produto() {
+        return nome_produto;
     }
 
 
-    public void setNome_produtoString(String nome_produtoString) {
-        this.nome_produtoString = nome_produtoString;
+    public void setNome_produto(String nome_produto) {
+        this.nome_produto = nome_produto;
     }
 
 
-    public Float getValor_produtoFloat() {
-        return valor_produtoFloat;
+    public Float getValor_produto() {
+        return valor_produto;
     }
 
 
-    public void setValor_produtoFloat(Float valor_produtoFloat) {
-        this.valor_produtoFloat = valor_produtoFloat;
+    public void setValor_produto(Float valor_produto) {
+        this.valor_produto = valor_produto;
     }
 
 
-    public String getTipoString() {
-        return tipoString;
+    @SuppressWarnings("rawtypes")
+    public Enum getTipo_produto() {
+        return tipo_produto;
     }
 
 
-    public void setTipoString(String tipoString) {
-        this.tipoString = tipoString;
+    public void setTipo_produto(@SuppressWarnings("rawtypes") Enum tipo_produto) {
+        this.tipo_produto = tipo_produto;
     }
 
     

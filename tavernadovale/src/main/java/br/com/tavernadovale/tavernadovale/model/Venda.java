@@ -1,5 +1,8 @@
 package br.com.tavernadovale.tavernadovale.model;
 
+
+import java.security.Timestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,20 +16,21 @@ public class Venda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_venda")
+    @Column(name = "id_venda", nullable = true)
     public int id_venda;
     
+    @Column(name = "valor_parcial", nullable = true)
+    public double valor_parcial_venda;
     
-    public double valor;
+    @Column(name = "valor_final", nullable = true)
+    public double valor_final_venda;
     
+    @SuppressWarnings("rawtypes")
+    @Column(name = "forma_pagamento", nullable = true)
+    public Enum forma_pagamento_venda;
     
-    public double valor_final;
-    
-    
-    public String forma_pagamento;
-    
-    
-    public String data_venda;
+    @Column(name = "data_venda", nullable = true)
+    public Timestamp data_hora_venda;
 
     public int getId_venda() {
         return id_venda;
@@ -36,35 +40,36 @@ public class Venda {
         this.id_venda = id_venda;
     }
 
-    public double getValor() {
-        return valor;
+    public double getValor_parcial_venda() {
+        return valor_parcial_venda;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setValor_parcial_venda(double valor) {
+        this.valor_parcial_venda = valor;
     }
 
-    public double getValor_final() {
-        return valor_final;
+    public double getValor_final_venda() {
+        return valor_final_venda;
     }
 
-    public void setValor_final(double valor_final) {
-        this.valor_final = valor_final;
+    public void setValor_final_venda(double valor_final) {
+        this.valor_final_venda = valor_final;
     }
 
-    public String getForma_pagamento() {
-        return forma_pagamento;
+    @SuppressWarnings("rawtypes")
+    public Enum getForma_pagamento_venda() {
+        return forma_pagamento_venda;
     }
 
-    public void setForma_pagamento(String forma_pagamento) {
-        this.forma_pagamento = forma_pagamento;
+    public void setForma_pagamento_venda(@SuppressWarnings("rawtypes") Enum forma_pagamento_venda) {
+        this.forma_pagamento_venda = forma_pagamento_venda;
     }
 
-    public String getData_venda() {
-        return data_venda;
+    public Timestamp getData_hora_venda() {
+        return data_hora_venda;
     }
 
-    public void setData_venda(String data_venda) {
-        this.data_venda = data_venda;
+    public void setData_venda(Timestamp data_hora_venda) {
+        this.data_hora_venda = data_hora_venda;
     }
 }

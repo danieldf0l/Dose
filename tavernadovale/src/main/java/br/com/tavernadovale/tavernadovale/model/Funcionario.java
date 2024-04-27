@@ -1,5 +1,7 @@
 package br.com.tavernadovale.tavernadovale.model;
 
+import java.sql.Time;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,59 +15,59 @@ public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_funcionario")
-    public int id;
+    @Column(name = "id_funcionario", nullable = true)
+    public int id_funcionario;
     
+    @Column(name = "cargo_funcionario", length = 25,nullable = true)
+    public String cargo_funcionario;
     
-    public String cargo;
+    @Column(name = "horario_entrada", nullable = true)
+    public Time horario_entrada;
     
+    @Column(name = "horario_saida", nullable = true)
+    public Time horario_saida;
     
-    public String horario_entrada;
-    
-    
-    public String horario_saida;
-    
-    
-    public String nome;
+    @Column(name = "nome_funcionario", length = 100, nullable = true)
+    public String nome_funcionario;
 
-    public int getId() {
-        return id;
+    public int getId_funcionario() {
+        return id_funcionario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_funcionario(int id) {
+        this.id_funcionario = id;
     }
 
-    public String getCargo() {
-        return cargo;
+    public String getCargo_funcionario() {
+        return cargo_funcionario;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setCargo_funcionario(String cargo) {
+        this.cargo_funcionario = cargo;
     }
 
-    public String getHorario_entrada() {
+    public Time getHorario_entrada() {
         return horario_entrada;
     }
 
-    public void setHorario_entrada(String horario_entrada) {
+    public void setHorario_entrada(Time horario_entrada) {
         this.horario_entrada = horario_entrada;
     }
 
-    public String getHorario_saida() {
+    public Time getHorario_saida() {
         return horario_saida;
     }
 
-    public void setHorario_saida(String horario_saida) {
+    public void setHorario_saida(Time horario_saida) {
         this.horario_saida = horario_saida;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNome_funcionario() {
+        return nome_funcionario;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome_funcionario(String nome) {
+        this.nome_funcionario = nome;
     }
 
 }
