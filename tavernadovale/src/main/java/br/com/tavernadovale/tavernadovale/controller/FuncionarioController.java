@@ -47,5 +47,5 @@ public class FuncionarioController{
         Optional<Funcionario> funcionario = dao.findById(idFuncionario);
         dao.deleteById(idFuncionario);
         return funcionario;
-        }
+    }
 }
