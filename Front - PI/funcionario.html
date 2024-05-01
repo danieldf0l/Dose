@@ -1,52 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./styles/style.css" rel="stylesheet">
-    <link href="./styles/fonts.css" rel="stylesheet">
-    <link href="./styles/media.css" rel="stylesheet">
-    <title>Registrar Funcionário</title>
-</head>
-<body>
-    <header>
-        <div id="title">
-            <h1>Taverna</h1>
-            <h1>do Vale</h1>
-        </div>
-        
-        <ul>
-            <a href="./estoque.html"><li>Estoque</li></a>
-            <a href="./vendas.html"><li>Vendas</li></a>
-            <a href="produtos.html"><li>Produtos</li></a>
-            <a href="./funcionario.html"><li>Funcionário</li></a>
-            <a href="./Home.html" class="incio-btn"><li>Início</li></a>
-        </ul>
-    </header>
+    <title>Cadastrar Funcionários</title>
+    <link rel="stylesheet" href="./styles/funcionario.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/media.css">
 
-    <aside>
-        <h2><span>Registrar</span></h2>
-        <h2>Funcionários</h2>
-        <p>Na página de Funcionários do nosso site, você encontrará campos simples para facilitar seu registro:
+</head>
+
+<body>
+    <nav>
+        <div class="logo">Taverna do Vale</div>
+        <div class="links">
+            <ul class="nav-itens">
+                <li><a href="./estoque.html">Estoque</a></li>
+                <li><a href="./vendas.html">Vendas</a></li>
+                <li><a href="./produtos.html">Produtos</a></li>
+                <li class="link_funcn"><a href="./funcionario.html">Funcionários</a></li>
+                <a href="./home.html" class="home">Home</a>
+
+            </ul>
+        </div>
+        <div class="btn_acesb_fonte">
+            <button id="azao" class="azao">+Aa</button>
+            <button id="azinho" class="azinho">-Aa</button>
+
+            <script>
+                var tamanhoFonte = 1; // tamanho inicial em rem
+                var tamanhoMax = 1.3; // tamanho máximo em rem
+                var tamanhoMin = 0.8; // tamanho mínimo em rem
+
+                document.getElementById("azao").addEventListener("click", function () {
+                    if (tamanhoFonte < tamanhoMax) {
+                        tamanhoFonte += 0.1; // aumenta em 0.1rem
+                        atualizarFonte();
+                    }
+                });
+
+                document.getElementById("azinho").addEventListener("click", function () {
+                    if (tamanhoFonte > tamanhoMin) {
+                        tamanhoFonte -= 0.1; // diminui em 0.1rem
+                        atualizarFonte();
+                    }
+                });
+
+                function atualizarFonte() {
+                    document.documentElement.style.fontSize = tamanhoFonte + 'rem';
+                }
+            </script>
+        </div>
+    </nav>
+
+    <main>
+
+        <h2 class="txt_cadstr">Cadastrar</h2>
+        <h2 class="txt_funcn">Funcionários</h2>
+        <p>
+            Na página de Funcionários do nosso site, você encontrará campos simples para facilitar seu registro:
             Preencha o Nome do Funcionário, insira o cargo atribuído (Gerente, Caixa, Atendente, Faxineiro) e inserindo o
-            horáiro de entrada e saída definido. Depois, clique em "Salvar" para que sua venda seja cadastrada.</p>
-        <form class="duplas">
-            <div class="input-topo">
-                <label for="nome-funcionario">Nome Funcionário</label>
+            horáiro de entrada e saída definido. Depois, clique em "Salvar" para que sua venda seja cadastrada.
+        </p>
+
+        <form class="campos_funcn">
+            <div class="campos_cima">
+                <label for="nome-funcionario">Nome do Funcionário</label>
                 <input type="text" id="nome-funcionario" name="nome-funcionario" placeholder="Nome Funcionário" required>
                 <label for="horario-entrada">Entrada</label>
                 <input type="time" id="horario-entrada" name="horario-entrada" placeholder="Horário Entrada" required>
             </div>
-            <div class="input-baixo">
+            <div class="campos_baixo">
                 <label for="cargo-funcionario">Cargo Funcionário</label>
                 <input type="text" id="cargo-funcionario" name="cargo-funcionario" placeholder="Gerente/Caixa/Faxineiro/Atendente" required>
                 <label for="horario-saida">Saída</label>
                 <input type="time" id="horario-saida" name="horario-saida" placeholder="Horário Saída" required>
-                <button type="submit" required>Salvar</button>
             </div>
         </form>
-    </aside>
-    
+        <button class="btn_slv_funcn">Salvar</button>
+    </main>
     <footer></footer>
 </body>
 </html>

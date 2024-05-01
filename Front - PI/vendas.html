@@ -1,51 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./styles/style.css" rel="stylesheet">
-    <link href="./styles/fonts.css" rel="stylesheet">
-    <link href="./styles/media.css" rel="stylesheet">
-    <title>Registrar Vendas</title>
+    <title>Cadastrar Vendas</title>
+    <link rel="stylesheet" href="./styles/vendas.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/media.css">
+
+
 </head>
+
 <body>
-    <header>
-        <div id="title">
-            <h1>Taverna</h1>
-            <h1>do Vale</h1>
+    <nav>
+        <div class="logo">Taverna do Vale</div>
+        <div class="links">
+            <ul class="nav-itens">
+                <li><a href="./estoque.html">Estoque</a></li>
+                <li class="link_vnds"><a href="./vendas.html">Vendas</a></li>
+                <li><a href="./produtos.html">Produtos</a></li>
+                <li><a href="./funcionario.html">Funcionários</a></li>
+                <a href="./home.html" class="home">Home</a>
+
+            </ul>
         </div>
-        
-        <ul>
-          <a href="./estoque.html"><li>Estoque</li></a>
-          <a href="./vendas.html"><li>Vendas</li></a>
-          <a href="produtos.html"><li>Produtos</li></a>
-          <a href="./funcionario.html"><li>Funcionário</li></a>
-            <a href="./Home.html" class="incio-btn"><li>Início</li></a>
-        </ul>
-    </header>
-    <aside>
-        <h2><span>Registrar</span></h2>
-        <h2>Vendas</h2>
-        <p>Na página de Vendas do nosso site, você encontrará campos simples para facilitar seu registro:
+        <div class="btn_acesb_fonte">
+            <button id="azao" class="azao">+Aa</button>
+            <button id="azinho" class="azinho">-Aa</button>
+
+            <script>
+                var tamanhoFonte = 1; // tamanho inicial em rem
+                var tamanhoMax = 1.3; // tamanho máximo em rem
+                var tamanhoMin = 0.8; // tamanho mínimo em rem
+
+                document.getElementById("azao").addEventListener("click", function () {
+                    if (tamanhoFonte < tamanhoMax) {
+                        tamanhoFonte += 0.1; // aumenta em 0.1rem
+                        atualizarFonte();
+                    }
+                });
+
+                document.getElementById("azinho").addEventListener("click", function () {
+                    if (tamanhoFonte > tamanhoMin) {
+                        tamanhoFonte -= 0.1; // diminui em 0.1rem
+                        atualizarFonte();
+                    }
+                });
+
+                function atualizarFonte() {
+                    document.documentElement.style.fontSize = tamanhoFonte + 'rem';
+                }
+            </script>
+        </div>
+    </nav>
+    <main>
+        <h2 class="txt_cadstr">Cadastrar</h2>
+        <h2 class="txt_vnds">Vendas</h2>
+        <p>
+          Na página de Vendas do nosso site, você encontrará campos simples para facilitar seu registro:
           Preencha o Valor Parcial do produto, insira o Valor Final, escolha a forma de pagamento efetuada (Pix, Dinheiro, Crédito, Débito) e indique a data da venda.
-          Depois, clique em "Salvar" para que sua venda seja cadastrada.</p>
-        <form class="duplas_vendas">
-          <div class="input-topo">
-            <label for="valor-parcial">Valor Parcial</label>
-            <input type="text" id="valor-parcial" name="valor-parcial" placeholder="R$ 100,00" required>
-            <label for="valor-final">Valor Final</label>
-            <input type="text" id="valor-final" name="valor-final" placeholder="R$ 100,00" required>
-          </div>
-          <div class="input-baixo">
-            <label for="forma-pagamento">Forma de Pagamento</label>
-            <input type="text" id="forma-pagamento" name="forma-pagamento" placeholder="Dinheiro/Pix/Credito/Debito" required>
-            <label for="data">Data</label>
-            <input type="date" id="data_venda" name="data_venda" placeholder="dd/mm/aaaa" required>
-            <button type="submit" required>Salvar</button>
-          </div>
+          Depois, clique em "Salvar" para que sua venda seja cadastrada.
+        </p>
+        <form class="campos_vnds">
+            <div class="campos_cima">
+              <label for="nome-produto">Nome do Produto</label>
+              <input type="text" id="nome-produto" name="nome-produto" placeholder="Nome" required>
+              <label for="valor-produto">Valor</label>
+              <input type="text" id="valor-produto" name="valor-produto" placeholder="R$ 100,00" required>  
+            </div>
+            <div class="campos_baixo">
+              <label for="forma-pagamento">Forma de Pagamento</label>
+              <input type="text" id="forma-pagamento" name="forma-pagamento" placeholder="Dinheiro/Pix/Credito/Debito" required>
+              <label for="data">Data</label>
+              <input type="date" id="data_venda" name="data_venda" placeholder="dd/mm/aaaa" required>   
+            </div>
         </form>
-        </aside>
-        <footer></footer>
-        </body>
-        
-        </html>
+        <button class="btn_slv_vnds">Salvar</button>
+    </main>
+    <footer></footer>
+</body>
+</html>

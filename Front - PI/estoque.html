@@ -2,84 +2,84 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./styles/style.css" rel="stylesheet">
-  <link href="./styles/fonts.css" rel="stylesheet">
-  <link href="./styles/media.css" rel="stylesheet">
-  <title>Cadastrar Estoque</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Estoque</title>
+    <link rel="stylesheet" href="./styles/estoque.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/media.css">
+
 </head>
 
 <body>
-  <header>
-    <div id="title">
-      <h1>Taverna</h1>
-      <h1>do Vale</h1>
-    </div>
+    <nav>
+        <div class="logo">Taverna do Vale</div>
+        <div class="links">
+            <ul class="nav-itens">
+                <li class="link_estq"><a href="./estoque.html">Estoque</a></li>
+                <li><a href="./vendas.html">Vendas</a></li>
+                <li><a href="./produtos.html">Produtos</a></li>
+                <li><a href="./funcionario.html">Funcionários</a></li>
+                <a href="./home.html" class="home">Home</a>
 
-    <ul>
-      <a class="Links" href="./estoque.html">
-        <li class="Links">Estoque</li>
-      </a>
-      <a class="Links" href="./vendas.html">
-        <li class="Links">Vendas</li>
-      </a>
-      <a class="Links" href="produtos.html">
-        <li class="Links">Produtos</li>
-      </a>
-      <a class="Links" href="./funcionario.html">
-        <li class="Links">Funcionário</li>
-      </a>
-      <a href="./Home.html" class="incio-btn">
-        <li>Início</li>
-      </a>
-      <a class="Acessib_fonte">
-        <button id="aumentarFonte">+Aa</button>
-        <button id="diminuirFonte">-Aa</button>
-  
-        <script>
-          var tamanhoFonte = 100; // Tamanho da fonte em porcentagem
-  
-          document.getElementById("aumentarFonte").addEventListener("click", function () {
-            tamanhoFonte += 10;
-            atualizarFonte();
-          });
-  
-          document.getElementById("diminuirFonte").addEventListener("click", function () {
-            tamanhoFonte -= 10;
-            atualizarFonte();
-          });
-  
-          function atualizarFonte() {
-            document.body.style.fontSize. = tamanhoFonte + '%';
-          }
-        </script>
-        </a>        
-    </ul>
-  </header>
-  <aside>
-    <h2><span>Cadastrar</span></h2>
-    <h2>Estosque</h2>
-    <p>Na página de Estoque do nosso site, você encontrará campos simples para facilitar seu registro:
-      Preencha o ID do produto, insira a quantidade, insira a data de validade e indique o lote do produto.
-      Depois, clique em "Salvar" para que seu estoque seja cadastrado.</p>
-    <form class="duplas_vendas">
-      <div class="input-topo">
-        <label for="codigo-estoque">Código</label>
-        <input type="text" id="codigo-estoque" name="codigo-estoque" placeholder="ID do Produto" required>
-        <label for="quatidade-estoque">Quantidade</label>
-        <input type="text" id="quatidade-estoque" name="quatidade-estoque" placeholder="Und." required>
-      </div>
-      <div class="input-baixo">
-        <label for="data-estoque">Data de Validade</label>
-        <input type="date" id="data-estoque" name="data-estoque" placeholder="dd/mm/aaaa" required>
-        <label for="lote-estoque">Lote</label>
-        <input type="text" id="lote-estoque" name="lote-estoque" placeholder="Nº do Lote/Texto" required>
-        <button type="submit" required>Salvar</button>
-      </div>
-    </form>
-  </aside>
-  <footer></footer>
+            </ul>
+        </div>
+        <div class="btn_acesb_fonte">
+            <button id="azao" class="azao">+Aa</button>
+            <button id="azinho" class="azinho">-Aa</button>
+
+            <script>
+                var tamanhoFonte = 1; // tamanho inicial em rem
+                var tamanhoMax = 1.3; // tamanho máximo em rem
+                var tamanhoMin = 0.8; // tamanho mínimo em rem
+
+                document.getElementById("azao").addEventListener("click", function () {
+                    if (tamanhoFonte < tamanhoMax) {
+                        tamanhoFonte += 0.1; // aumenta em 0.1rem
+                        atualizarFonte();
+                    }
+                });
+
+                document.getElementById("azinho").addEventListener("click", function () {
+                    if (tamanhoFonte > tamanhoMin) {
+                        tamanhoFonte -= 0.1; // diminui em 0.1rem
+                        atualizarFonte();
+                    }
+                });
+
+                function atualizarFonte() {
+                    document.documentElement.style.fontSize = tamanhoFonte + 'rem';
+                }
+            </script>
+        </div>
+    </nav>
+
+    <main>
+
+        <h2 class="txt_cadstr">Cadastrar</h2>
+        <h2 class="txt_estq">Estosque</h2>
+        <p>
+            Na página de Estoque do nosso site, você encontrará campos simples para facilitar seu registro:
+            Preencha o ID do produto, insira a quantidade, insira a data de validade e indique o lote do produto.
+            Depois, clique em "Salvar" para que seu estoque seja cadastrado.
+        </p>
+
+        <form class="campos_estq">
+            <div class="campos_cima">
+                <label for="codigo-estoque">Código</label>
+                <input type="text" id="codigo-estoque" name="codigo-estoque" placeholder="ID do Produto" required>
+                <label for="quatidade-estoque">Quantidade</label>
+                <input type="text" id="quatidade-estoque" name="quatidade-estoque" placeholder="Und." required>
+            </div>
+            <div class="campos_baixo">
+                <label for="data-estoque">Data de Validade</label>
+                <input type="date" id="data-estoque" name="data-estoque" placeholder="dd/mm/aaaa" required>
+                <label for="lote-estoque">Lote</label>
+                <input type="text" id="lote-estoque" name="lote-estoque" placeholder="Nº do Lote/Texto" required>
+            </div>
+        </form>
+        <button class="btn_slv_estq">Salvar</button>
+    </main>
+    <footer></footer>
 </body>
-
 </html>

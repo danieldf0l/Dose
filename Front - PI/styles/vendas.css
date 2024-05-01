@@ -41,12 +41,12 @@ nav {
     transition: 0.5s color; /* Definindo a cor padrão da navbar*/
 }
 
-.nav-itens > li:not(.link_estq) > a:hover {
+.nav-itens > li:not(.link_vnds) > a:hover {
     color: #aaaaaa;
     transition: 0.3s color; /* Cor fixa para links sem classe .link_estq, quando passamos o mouse */
 }
 
-.link_estq > a {
+.link_vnds > a {
     color: #aaaaaa !important; /* Cor fixa para links com classe .link_estq */
 }
 
@@ -122,7 +122,7 @@ nav {
     color: var(--verdemusgo);
 }
 
-.txt_estq{
+.txt_vnds{
     margin-left: 70px;
     font-size: 3.4375rem;
     font-family: poppinsmedium;
@@ -172,7 +172,7 @@ form input{
 margin-left: 400px;
 }
 
-.btn_slv_estq{
+.btn_slv_vnds{
     margin-top: 15px;
     margin-left: 1400px;
     height: 45px;
@@ -189,7 +189,7 @@ margin-left: 400px;
     transition: 0.5s background;
 }
 
-.btn_slv_estq:hover{
+.btn_slv_funcn:hover{
     background-color: var(--marrom);
     transition: 0.3s background;
 }
