@@ -1,7 +1,6 @@
 package br.com.tavernadovale.tavernadovale.model;
 
-
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,9 +24,8 @@ public class Venda {
     @Column(name = "valor_final", nullable = true)
     public double valor_final_venda;
     
-    @SuppressWarnings("rawtypes")
-    @Column(name = "forma_pagamento", nullable = true)
-    public Enum forma_pagamento_venda;
+    @Column(name = "forma_pagamento", length = 45, nullable = true)
+    public String forma_pagamento_venda;
     
     @Column(name = "data_venda", nullable = true)
     public Timestamp data_hora_venda;
@@ -56,12 +54,11 @@ public class Venda {
         this.valor_final_venda = valor_final;
     }
 
-    @SuppressWarnings("rawtypes")
-    public Enum getForma_pagamento_venda() {
+    public String getForma_pagamento_venda() {
         return forma_pagamento_venda;
     }
 
-    public void setForma_pagamento_venda(@SuppressWarnings("rawtypes") Enum forma_pagamento_venda) {
+    public void setForma_pagamento_venda(String forma_pagamento_venda) {
         this.forma_pagamento_venda = forma_pagamento_venda;
     }
 
