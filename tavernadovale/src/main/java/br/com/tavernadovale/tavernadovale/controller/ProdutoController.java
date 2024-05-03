@@ -14,13 +14,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.tavernadovale.tavernadovale.dao.IFuncionario;
-import br.com.tavernadovale.tavernadovale.model.Funcionario;
+import br.com.tavernadovale.tavernadovale.dao.IProduto;
+import br.com.tavernadovale.tavernadovale.model.Produto;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/produto")
 public class ProdutoController {
+
+    @Autowired
+    private IProduto dao;
 
     @GetMapping()
     public List<Produto> listarProduto(){
@@ -29,7 +32,7 @@ public class ProdutoController {
     
     @PostMapping
     public Produto criarProduto(@RequestBody Produto produto){
-        Estoque produtoNovo = dao.save(produto);
+        Produto produtoNovo = dao.save(produto);
         return produtoNovo;
     }
 

@@ -23,7 +23,7 @@ import br.com.tavernadovale.tavernadovale.model.Estoque;
 public class EstoqueController {
     
     @Autowired
-    private IVenda dao;
+    private IEstoque dao;
 
     @GetMapping()
     public List<Estoque> listarEstoque(){
