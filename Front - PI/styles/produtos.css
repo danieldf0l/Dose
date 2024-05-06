@@ -189,7 +189,7 @@ margin-left: 400px;
     transition: 0.5s background;
 }
 
-.btn_slv_funcn:hover{
+.btn_slv_prdts:hover{
     background-color: var(--marrom);
     transition: 0.3s background;
 }
