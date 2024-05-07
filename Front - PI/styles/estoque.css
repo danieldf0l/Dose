@@ -59,8 +59,8 @@ nav {
 .home {
     display: inline-block;
     padding: 4px 30px;
-    font-size: 0.9375 rem;
-    margin-left: 20px;
+    font-size: 1.0rem;
+    font-family: poppinsregular;
     background-color: var(--verdemusgo);
     border: none;
     color: var(--cinza);
