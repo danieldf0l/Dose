@@ -1,10 +1,10 @@
 const formulario = document.querySelector("form");
-const InputNomeFuncionario = document.getElementById(".nome-funcionario");
-const InputHorarioEntrada = document.querySelector(".horario-entrada");
-const InputCargoFuncionario = document.querySelector(".cargo-funcionario");
-const InputHorarioSaida = document.querySelector(".horario-saida");
+var InputNomeFuncionario = document.getElementById("nome-funcionario");
+var InputHorarioEntrada = document.getElementById("horario-entrada");
+var InputCargoFuncionario = document.getElementById("cargo-funcionario");
+var InputHorarioSaida = document.getElementById("horario-saida");
 
-console.log(formulario);    
+console.log(InputHorarioSaida);    
 function cadastrarFuncionario(){
     fetch("http://localhost:8080/funcionario", 
     {
