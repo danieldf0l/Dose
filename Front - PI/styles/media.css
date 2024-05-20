@@ -1,33 +1,70 @@
-@media screen and (max-width: 760px){
+@media  (max-width: 1280px){
 
-    header{
-        flex-direction: column;
+    .nav-itens{
+        margin-inline: 150px;
+        margin-top: 10px;
+    }
+    
+    .txt_cadstr{
+        font-size: 3rem;
+        margin-top: 50px;
     }
 
-    main{
-flex-direction: column;
-
+    .txt_estq{
+        font-size: 3rem;
     }
 
-    h2{
-        font-size: 38px;
+    .txt_funcn{
+        font-size: 3rem;
     }
 
-    form{
-        margin: 0 auto;
-        width: 100%;
+    .txt_prdts{
+        font-size: 3rem;
     }
 
-    input{
-        align-self: center;
+    .txt_vnds{
+        font-size: 3rem;
     }
 
-    img{
-        display: none;
-
+    .p{
+        font-size: 0.300rem;
+        margin-top: 25px;
+    }
+    
+    .campos_estq{
+        margin-left: 70px;
     }
 
-    ul{
-        text-align: center;
+    .campos_prdts{
+        margin-left: 70px;
     }
+
+    .campos_vnds{
+        margin-left: 70px;
+    }
+
+    .campos_funcn{
+        margin-left: 70px;
+    }
+
+    .campos_baixo{
+        margin-left: 120px;
+    }
+
+    .btn_slv_estq{
+        margin-left: 990px;
+    }
+
+    .btn_slv_prdts{
+        margin-left: 990px;
+    }
+
+    .btn_slv_vnds{
+        margin-left: 990px;
+    }
+
+    .btn_slv_funcn{
+        margin-left: 990px;
+    }
+
 }
