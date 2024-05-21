@@ -26,9 +26,9 @@
         font-size: 3rem;
     }
 
-    .p{
-        font-size: 0.300rem;
-        margin-top: 25px;
+    .txt_expl{
+        font-size: 1.1rem;
+        margin-top: 10px;
     }
     
     .campos_estq{
@@ -72,7 +72,7 @@
 @media (max-width: 1600px) {
     
     .nav-itens{
-        margin-inline: 310px;
+        margin-inline: 250px;
         margin-top: 10px;
     }
     
@@ -97,13 +97,13 @@
         font-size: 2.8rem;
     }
 
-    .p{
-        font-size: 0.300rem;
-        margin-top: 10px;
+    .txt_expl{
+        font-size: 1.1rem;
+        margin-top: 20px;
     }
     
     .campos_estq{
-        margin-top: auto;
+        margin-top: 20px;
         margin-left: 100px;
     }
 
