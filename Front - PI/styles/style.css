@@ -8,7 +8,7 @@ Pedro Roceti Pache */
     --cinza: #DDDDDD;
     --verdemusgo: #5E865C;
     --cinzaescuro: #545454;
-    --marrom: #846642; 
+    --marrom: #846642;
     --dourado: #F0CA66;
     --branco: #ffffff;
     --preto: #000;
@@ -23,39 +23,39 @@ body {
     padding: 15px;
 }
 
-header{
+header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-#title{
+#title {
     flex-direction: column;
     line-height: 10px;
 }
 
-li{
+li {
     display: inline-block;
     margin: 20px;
 
 }
 
-a{
+a {
     color: var(--preto);
 }
 
-a :hover{
+a :hover {
 
     color: var(--dourado);
     transition: 0.3s all;
 }
 
-h1{
+h1 {
     font-weight: 200;
 }
 
-main{
+main {
     display: flex;
     flex-direction: row;
     margin-top: 50px;
@@ -67,11 +67,11 @@ h2 {
     font-family: poppinsmedium;
 }
 
-span{
+span {
     color: var(--verdemusgo);
 }
 
-p{
+p {
     line-height: 20px;
     max-width: 790px;
     font-family: poppinslight;
@@ -79,19 +79,19 @@ p{
     text-align: justify;
 }
 
-img{
+img {
     scale: 125%;
     width: 400px;
     margin-left: 160px;
-    
+
 }
 
-form{
+form {
     display: flex;
     width: 70%;
 }
 
-form [type="submit"]{
+form [type="submit"] {
     height: 50px;
     width: 50%;
     background-color: var(--verdemusgo);
@@ -99,7 +99,7 @@ form [type="submit"]{
     font-size: bold;
 }
 
-form [type="submit"]:hover{
+form [type="submit"]:hover {
     cursor: pointer;
 }
 
@@ -109,7 +109,7 @@ form label {
     margin-top: 10px;
 }
 
-form input{
+form input {
     margin-top: 2px;
     height: 20px;
     width: 300px;
@@ -146,21 +146,21 @@ a.inscreva-se-btn {
     transition: 0.3s;
 }
 
-a.inscreva-se-btn :hover{
+a.inscreva-se-btn :hover {
     color: var(--dourado);
 
 }
 
-a.incio-btn{
+a.incio-btn {
     background-color: var(--verdemusgo);
     border-radius: 15px;
     color: var(--cinza);
     border: 2px solid var(--verdemusgo);
     padding: 8px;
-    text-decoration: none;    
+    text-decoration: none;
 }
 
-input{
+input {
     margin-top: 20px;
     height: 20px;
     padding: 15px;
@@ -169,12 +169,12 @@ input{
     font-size: 15px;
 }
 
-.input-baixo{
+.input-baixo {
     margin-left: 300px;
 
 }
 
-:-ms-input-placeholder{
+:-ms-input-placeholder {
     color: var(--cinzaescuro);
 
 }
@@ -190,8 +190,9 @@ footer {
     border-top-right-radius: 30px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    box-shadow: 0px -10px 60px rgba(0, 0, 0, 0.4);}
+    box-shadow: 0px -10px 60px rgba(0, 0, 0, 0.4);
+}
 
-    .Links{
-        text-decoration: none;
-    }
+.Links {
+    text-decoration: none;
+}

@@ -9,13 +9,13 @@
     --cinza: #DDDDDD;
     --verdemusgo: #5E865C;
     --cinzaescuro: #545454;
-    --marrom: #846642; 
+    --marrom: #846642;
     --dourado: #F0CA66;
     --branco: #ffffff;
     --preto: #000;
 }
 
-body{
+body {
     background-color: var(--cinza);
     color: 232020;
 }
@@ -34,20 +34,23 @@ nav {
     margin-inline: 450px;
 }
 
-.nav-itens>li>a{    
+.nav-itens>li>a {
     padding-left: 20px;
     color: #232020;
     text-decoration: none;
-    transition: 0.5s color; /* Definindo a cor padrão da navbar*/
+    transition: 0.5s color;
+    /* Definindo a cor padrão da navbar*/
 }
 
-.nav-itens > li:not(.link_vnds) > a:hover {
+.nav-itens>li:not(.link_vnds)>a:hover {
     color: #aaaaaa;
-    transition: 0.3s color; /* Cor fixa para links sem classe .link_estq, quando passamos o mouse */
+    transition: 0.3s color;
+    /* Cor fixa para links sem classe .link_estq, quando passamos o mouse */
 }
 
-.link_vnds > a {
-    color: #aaaaaa !important; /* Cor fixa para links com classe .link_estq */
+.link_vnds>a {
+    color: #aaaaaa !important;
+    /* Cor fixa para links com classe .link_estq */
 }
 
 .logo {
@@ -72,17 +75,17 @@ nav {
 
 }
 
-.home:hover{
+.home:hover {
     background-color: var(--marrom);
     transition: 0.3s background;
 
 }
 
-.btn_acesb_fonte{
+.btn_acesb_fonte {
     margin-left: 10px;
 }
 
-.azao{
+.azao {
     padding: 5px 5px;
     font-size: 13px;
     background-color: var(--verdemusgo);
@@ -93,12 +96,12 @@ nav {
     transition: 0.5s background;
 }
 
-.azao:hover{
+.azao:hover {
     background-color: var(--marrom);
     transition: 0.3s background;
 }
 
-.azinho{
+.azinho {
     padding: 5px 5px;
     font-size: 13px;
     background-color: var(--verdemusgo);
@@ -109,12 +112,12 @@ nav {
     transition: 0.5s background;
 }
 
-.azinho:hover{
+.azinho:hover {
     background-color: var(--marrom);
     transition: 0.3s background;
 }
 
-.txt_cadstr{
+.txt_cadstr {
     margin-top: 80px;
     margin-left: 70px;
     font-size: 3.4375rem;
@@ -122,13 +125,13 @@ nav {
     color: var(--verdemusgo);
 }
 
-.txt_vnds{
+.txt_vnds {
     margin-left: 70px;
     font-size: 3.4375rem;
     font-family: poppinsmedium;
 }
 
-p{
+p {
     margin-top: 40px;
     margin-left: 70px;
     line-height: 25px;
@@ -138,7 +141,7 @@ p{
     text-align: justify;
 }
 
-form{
+form {
     display: flex;
     margin-top: 80px;
     margin-left: 200px;
@@ -148,11 +151,12 @@ form label {
     display: block;
     margin-bottom: 5px;
     margin-top: 10px;
-    font-size: 1.4375rem;;
-    font-family: poppinsregular; 
+    font-size: 1.4375rem;
+    ;
+    font-family: poppinsregular;
 }
 
-form input{
+form input {
     margin-top: 2px;
     height: 62px;
     width: 400px;
@@ -161,18 +165,18 @@ form input{
     border: none;
     font-size: 1rem;
     margin-right: 20px;
-    font-family: poppinslight; 
+    font-family: poppinslight;
 }
 
-.campos_cima{
+.campos_cima {
     margin-left: 100px;
 }
 
-.campos_baixo{
-margin-left: 400px;
+.campos_baixo {
+    margin-left: 400px;
 }
 
-.btn_slv_vnds{
+.btn_slv_vnds {
     margin-top: 15px;
     margin-left: 1400px;
     height: 45px;
@@ -189,7 +193,7 @@ margin-left: 400px;
     transition: 0.5s background;
 }
 
-.btn_slv_vnds:hover{
+.btn_slv_vnds:hover {
     background-color: var(--marrom);
     transition: 0.3s background;
 }

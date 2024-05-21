@@ -1,145 +1,163 @@
-@media  (max-width: 1280px) {
+@media (max-width: 1280px) {
 
-    .nav-itens{
+    .nav-itens {
         margin-inline: 150px;
         margin-top: 10px;
     }
-    
-    .txt_cadstr{
+
+    .txt_cadstr {
         font-size: 3rem;
         margin-top: 50px;
     }
 
-    .txt_estq{
+    .txt_estq {
         font-size: 3rem;
     }
 
-    .txt_funcn{
+    .txt_funcn {
         font-size: 3rem;
     }
 
-    .txt_prdts{
+    .txt_prdts {
         font-size: 3rem;
     }
 
-    .txt_vnds{
+    .txt_vnds {
         font-size: 3rem;
     }
 
-    .txt_expl{
+    .txt_expl {
         font-size: 1.1rem;
         margin-top: 10px;
     }
-    
-    .campos_estq{
+
+    .campos_estq {
         margin-left: 70px;
     }
 
-    .campos_prdts{
+    .campos_prdts {
         margin-left: 70px;
     }
 
-    .campos_vnds{
+    .campos_vnds {
         margin-left: 70px;
     }
 
-    .campos_funcn{
+    .campos_funcn {
         margin-left: 70px;
     }
 
-    .campos_baixo{
+    .campos_baixo {
         margin-left: 120px;
     }
 
-    .btn_slv_estq{
+    .btn_slv_estq {
         margin-left: 990px;
     }
 
-    .btn_slv_prdts{
+    .btn_slv_prdts {
         margin-left: 990px;
     }
 
-    .btn_slv_vnds{
+    .btn_slv_vnds {
         margin-left: 990px;
     }
 
-    .btn_slv_funcn{
+    .btn_slv_funcn {
         margin-left: 990px;
+    }
+
+    .logo {
+        text-align: center;
+        margin-left: 470px;
+    }
+
+    .btn_acesb_fonte {
+        margin-left: auto;
     }
 
 }
 
 @media (max-width: 1600px) {
-    
-    .nav-itens{
+
+    .nav-itens {
         margin-inline: 250px;
         margin-top: 10px;
     }
-    
-    .txt_cadstr{
+
+    .txt_cadstr {
         font-size: 2.8rem;
         margin-top: 35px;
     }
 
-    .txt_estq{
+    .txt_estq {
         font-size: 2.8rem;
     }
 
-    .txt_funcn{
+    .txt_funcn {
         font-size: 2.8rem;
     }
 
-    .txt_prdts{
+    .txt_prdts {
         font-size: 2.8rem;
     }
 
-    .txt_vnds{
+    .txt_vnds {
         font-size: 2.8rem;
     }
 
-    .txt_expl{
+    .txt_expl {
         font-size: 1.1rem;
         margin-top: 20px;
     }
-    
-    .campos_estq{
+
+    .campos_estq {
         margin-top: 20px;
         margin-left: 100px;
     }
 
-    .campos_prdts{
+    .campos_prdts {
         margin-top: auto;
         margin-left: 100px;
     }
 
-    .campos_vnds{
+    .campos_vnds {
         margin-top: auto;
         margin-left: 100px;
     }
 
-    .campos_funcn{
+    .campos_funcn {
         margin-top: auto;
         margin-left: 100px;
     }
 
-    .campos_baixo{
+    .campos_baixo {
         margin-left: 250px;
     }
 
-    .btn_slv_estq{
+    .btn_slv_estq {
         margin-left: 1150px;
     }
 
-    .btn_slv_prdts{
+    .btn_slv_prdts {
         margin-left: 1150px;
     }
 
-    .btn_slv_vnds{
+    .btn_slv_vnds {
         margin-left: 1150px;
     }
 
-    .btn_slv_funcn{
+    .btn_slv_funcn {
         margin-left: 1150px;
+    }
+
+    .logo {
+        text-align: center;
+        margin-left: 600px;
+    }
+
+    .btn_acesb_fonte {
+        margin-left: auto;
     }
 
 }

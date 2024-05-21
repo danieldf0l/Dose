@@ -9,13 +9,13 @@
     --cinza: #DDDDDD;
     --verdemusgo: #5E865C;
     --cinzaescuro: #545454;
-    --marrom: #846642; 
+    --marrom: #846642;
     --dourado: #F0CA66;
     --branco: #ffffff;
     --preto: #000;
 }
 
-body{
+body {
     background-color: var(--cinza);
     color: 232020;
 }
@@ -33,7 +33,7 @@ nav {
     display: flex;
 }
 
-.nav-itens>li>a{
+.nav-itens>li>a {
     padding-left: 20px;
     color: #232020;
     text-decoration: none;
@@ -41,7 +41,7 @@ nav {
 
 }
 
-.nav-itens>li>a:hover{
+.nav-itens>li>a:hover {
     color: #D1D1D1;
     transition: 0.5s color;
 
@@ -63,7 +63,7 @@ nav {
     transition: 0.5s background;
 }
 
-.home:hover{
+.home:hover {
     background-color: var(--marrom);
     transition: 0.5s background;
 

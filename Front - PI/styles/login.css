@@ -2,33 +2,22 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-
 }
-
-
 
 :root {
     --cinza: #DDDDDD;
     --verdemusgo: #5E865C;
-    --cinzaescuro: #545454;
-    --marrom: #846642; 
+    --cinzaescuro: #8a8a8a;
+    --marrom: #846642;
     --dourado: #F0CA66;
     --branco: #ffffff;
     --preto: #000;
 }
 
-body{
-    height: 100vh;
+body {
+
     background-color: var(--cinza);
     color: 232020;
-}
-
-.logo{
-    font-family: poppinsmedium;
-    font-size: 40px;
-    text-align: center;
-    margin-top: 14px;
-    color: var(--cinza);
 }
 
 .footer {
@@ -37,14 +26,64 @@ body{
     left: 0;
     width: 100%;
     background-color: var(--verdemusgo);
-    height: 65px;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
 }
 
-.txt_login{
+.logo {
+    margin-left: 780px;
+    font-family: poppinsmedium;
+    font-size: 40px;
+    color: var(--cinza);
+}
+
+.btn_acesb_fonte {
+    margin-right: 80px;
+}
+
+
+.azao {
+    padding: 5px 5px;
+    font-size: 13px;
+    background-color: var(--cinza);
+    border: none;
+    color: var(--verdemusgo);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s background;
+}
+
+.azao:hover {
+    background-color: var(--cinzaescuro);
+    color: var(--cinza);
+    transition: 0.3s background;
+}
+
+.azinho {
+    padding: 5px 5px;
+    font-size: 13px;
+    background-color: var(--cinza);
+    border: none;
+    color: var(--verdemusgo);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s background;
+}
+
+.azinho:hover {
+    background-color: var(--cinzaescuro);
+    color: var(--cinza);
+    transition: 0.3s background;
+}
+
+.txt_login {
     text-align: center;
     font-family: poppinslight;
     margin-top: 130px;
@@ -52,32 +91,34 @@ body{
 }
 
 form {
-    margin-top: 170px;
-
+    margin-top: 25px;
 }
 
 form label {
     display: block;
     margin-bottom: 5px;
     margin-top: 10px;
-    font-size: 1.4375rem;;
-    font-family: poppinsregular; 
+    font-size: 1.4375rem;
+    font-family: poppinsregular;
 }
 
-form input{
+form input {
     margin-top: 2px;
     height: 62px;
     width: 400px;
     padding: 10px;
-    border-radius: 16px;
+    border-radius: 13px;
     border: none;
     font-size: 1rem;
     margin-right: 20px;
-    font-family: poppinslight; 
+    font-family: poppinslight;
 }
 
-.btn_entrar{
+.btn_entrar {
+    display: inline-block;
+    text-align: center;
     margin-top: 20px;
+    margin-left: 280px;
     height: 45px;
     width: 120px;
     border-radius: 10px;
@@ -87,35 +128,35 @@ form input{
     color: var(--cinza);
     background-color: var(--verdemusgo);
     cursor: pointer;
+    text-decoration: none;
+    /* Remove o sublinhado do link */
+    line-height: 45px;
+    /* Centraliza o texto verticalmente */
     transition: 0.5s background;
 }
 
-.btn_entrar:hover{
+.btn_entrar:hover {
     background-color: var(--marrom);
     transition: 0.3s background;
 }
 
-img{
+img {
     scale: 125%;
-    width: 30%;
-    margin-left: 160px;
-    
+    width: 100%;
 }
 
-/* Ajusta o padding para o layout ficar mais agradável */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 5%;
+    padding: 0 10%;
+}
+
 .container {
-    margin-left: 10%;
-    float: left;
     width: 40%;
-    padding-right: 10px;
-    display: inline;
 }
 
 .img {
-    
-    margin-top: 10%;
-    margin-left: 10%;
-    
-    
-    
+    width: 40%;
 }

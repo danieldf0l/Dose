@@ -11,23 +11,52 @@
 <body>
     <div class="footer">
         <h1 class="logo">Taverna do Vale</h1>
+        <div class="btn_acesb_fonte">
+            <button id="azao" class="azao">+Aa</button>
+            <button id="azinho" class="azinho">-Aa</button>
+        </div>
     </div>
-    <div>
         <h2 class="txt_login">A organização da sua adega: sem choro, só Dose!</h2>
     </div>
-    <div class="container">
-    <form>
-        <div class="Inicial">
-            <label for="label_usuario">Usuário</label>
-            <input type="text" name="usuario" placeholder="Usuário" required>
-            <label for="label_senha">Senha</label>
-            <input type="password" name="senha" placeholder="Senha" required>
+    <div class="content-wrapper">
+        <div class="container">
+            <form id="loginForm" action="home.html" method="GET">
+                <div class="Inicial">
+                    <label for="label_usuario">Usuário</label>
+                    <input type="text" name="usuario" placeholder="Usuário" required>
+                    <label for="label_senha">Senha</label>
+                    <input type="password" name="senha" placeholder="Senha" required>
+                </div>
+                <button type="submit" class="btn_entrar">Entrar</button>
+            </form>
         </div>
-        <button class="btn_entrar">Entrar</button>
-    </form>
-</div>
-    <div class="img">
-        <img src="./components/image/Barril.png" alt="Barril">
+        <div class="img">
+            <img src="./components/image/Barril.png" alt="Barril">
+        </div>
     </div>
+
+    <script>
+        var tamanhoFonte = 1; // tamanho inicial em rem
+        var tamanhoMax = 1.3; // tamanho máximo em rem
+        var tamanhoMin = 0.8; // tamanho mínimo em rem
+
+        document.getElementById("azao").addEventListener("click", function () {
+            if (tamanhoFonte < tamanhoMax) {
+                tamanhoFonte += 0.1; // aumenta em 0.1rem
+                atualizarFonte();
+            }
+        });
+
+        document.getElementById("azinho").addEventListener("click", function () {
+            if (tamanhoFonte > tamanhoMin) {
+                tamanhoFonte -= 0.1; // diminui em 0.1rem
+                atualizarFonte();
+            }
+        });
+
+        function atualizarFonte() {
+            document.documentElement.style.fontSize = tamanhoFonte + 'rem';
+        }
+    </script>
 </body>
 </html>
