@@ -4,56 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./styles/style.css" rel="stylesheet">
-    <link href="./styles/fonts.css" rel="stylesheet">
-    <link href="./styles/media.css" rel="stylesheet">
-    <title>Taverna do Vale</title>
+    <title>Home</title>
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/media.css">
 </head>
 
 <body>
-    <header>
-        <div id="title">
-            <h1>Taverna</h1>
-            <h1>do Vale</h1>
+    <nav>
+        <div class="logo">Taverna do Vale</div>
+        <div class="links">
+            <ul class="nav-itens">
+                <li><a href="./estoque.html">Estoque</a></li>
+                <li><a href="./vendas.html">Vendas</a></li>
+                <li><a href="./produtos.html">Produtos</a></li>
+                <li><a href="./funcionario.html">Funcionários</a></li>
+                <li><a href="./home.html"><button class="home">Home</button></a></li>
+
+            </ul>
         </div>
+        <div class="btn_acesb_fonte">
+            <button id="azao" class="azao">+Aa</button>
+            <button id="azinho" class="azinho">-Aa</button>
 
-        <ul>
-            <a href="./estoque.html">
-                <li>Estoque</li>
-            </a>
-            <a href="./vendas.html">
-                <li>Vendas</li>
-            </a>
-            <a href="produtos.html">
-                <li>Produtos</li>
-            </a>
-            <a href="./funcionario.html">
-                <li>Funcionário</li>
-            </a>
-            <a href="#" class="inscreva-se-btn">
-                <li>Já tem uma conta?</li>
-            </a>
-        </ul>
-    </header>
+            <script>
+                var tamanhoFonte = 1; // tamanho inicial em rem
+                var tamanhoMax = 1.3; // tamanho máximo em rem
+                var tamanhoMin = 0.8; // tamanho mínimo em rem
 
-    <main>
-        <aside>
-            <h2><span>Inscreva-se agora</span></h2>
-            <h2>Na Taverna do Vale</h2>
-            <p>Somos uma adega distribuidora de bebidas, gostariamos de ajudar em seu churrasco trazendo alegria e
-                diversão.</p>
-            <form id="index">
-                <div class="Inicial">
-                    <input type="text" name="usuario" placeholder="Usuário" required>
-                    <input type="password" name="senha" placeholder="Senha" required>
-                    <input type="submit" name="Enviar" value="Enviar >">
-                </div>
-            </form>
-        </aside>
-        <article>
-            <img src="./components/image/Barril.png" alt="Barril">
-        </article>
-    </main>
+                document.getElementById("azao").addEventListener("click", function () {
+                    if (tamanhoFonte < tamanhoMax) {
+                        tamanhoFonte += 0.1; // aumenta em 0.1rem
+                        atualizarFonte();
+                    }
+                });
+
+                document.getElementById("azinho").addEventListener("click", function () {
+                    if (tamanhoFonte > tamanhoMin) {
+                        tamanhoFonte -= 0.1; // diminui em 0.1rem
+                        atualizarFonte();
+                    }
+                });
+
+                function atualizarFonte() {
+                    document.documentElement.style.fontSize = tamanhoFonte + 'rem';
+                }
+            </script>
+        </div>
+    </nav>
+<main>
+    <div class="txt_acao">
+        <h1 class="oqdj">O que deseja</h1>
+        <h1 class="acessar">acessar?</h1>
+    </div>
+    <div class="main">
+        <div class="card card1">
+            <img src="./components/image/Estoque.png" alt="imagem_estq">
+            <h1 class="txt_card">ESTOQUE</h1>
+        </div>
+        <div class="card card2">
+            <img src="./components/image/Vendas.png" alt="imagem_vnds">
+            <h1 class="txt_card">VENDAS</h1>
+        </div>
+        <div class="card card3">
+            <img src="./components/image/Produtos.png" alt="imagem_prdts">
+            <h1 class="txt_card">PRODUTOS</h1>
+        </div>
+        <div class="card card4">
+            <img src="./components/image/Funcionários.png" alt="imagem_func">
+            <h1 class="txt_card">FUNCIONÁRIOS</h1>
+        </div>
+    </div>
+</main>
     <footer></footer>
 </body>
 
