@@ -1,163 +1,156 @@
-@media (max-width: 1280px) {
-
+/* Media queries existentes com ajustes */
+@media (max-width: 1600px) {
     .nav-itens {
-        margin-inline: 150px;
+        margin-inline: 20%;
         margin-top: 10px;
     }
 
-    .txt_cadstr {
-        font-size: 3rem;
-        margin-top: 50px;
-    }
-
-    .txt_estq {
-        font-size: 3rem;
-    }
-
-    .txt_funcn {
-        font-size: 3rem;
-    }
-
-    .txt_prdts {
-        font-size: 3rem;
-    }
-
-    .txt_vnds {
-        font-size: 3rem;
+    .txt_cadstr, .txt_estq, .txt_funcn, .txt_prdts, .txt_vnds {
+        font-size: 2.5rem;
+        margin-top: 20px;
     }
 
     .txt_expl {
-        font-size: 1.1rem;
-        margin-top: 10px;
+        font-size: 1rem;
+        margin-top: 20px;
     }
 
-    .campos_estq {
-        margin-left: 70px;
-    }
-
-    .campos_prdts {
-        margin-left: 70px;
-    }
-
-    .campos_vnds {
-        margin-left: 70px;
-    }
-
-    .campos_funcn {
-        margin-left: 70px;
+    .campos_estq, .campos_prdts, .campos_vnds, .campos_funcn {
+        margin-top: auto;
+        margin-left: 5%;
     }
 
     .campos_baixo {
-        margin-left: 120px;
+        margin-left: 15%;
     }
 
-    .btn_slv_estq {
-        margin-left: 990px;
-    }
-
-    .btn_slv_prdts {
-        margin-left: 990px;
-    }
-
-    .btn_slv_vnds {
-        margin-left: 990px;
-    }
-
-    .btn_slv_funcn {
-        margin-left: 990px;
+    .btn_slv_estq, .btn_slv_prdts, .btn_slv_vnds, .btn_slv_funcn {
+        margin-left: 75%;
     }
 
     .logo {
         text-align: center;
-        margin-left: 470px;
+        margin-left: 37%;
     }
 
     .btn_acesb_fonte {
         margin-left: auto;
     }
-
 }
 
-@media (max-width: 1600px) {
-
+@media (max-width: 1280px) {
     .nav-itens {
-        margin-inline: 250px;
+        margin-inline: 10%;
         margin-top: 10px;
     }
 
-    .txt_cadstr {
-        font-size: 2.8rem;
-        margin-top: 35px;
-    }
-
-    .txt_estq {
-        font-size: 2.8rem;
-    }
-
-    .txt_funcn {
-        font-size: 2.8rem;
-    }
-
-    .txt_prdts {
-        font-size: 2.8rem;
-    }
-
-    .txt_vnds {
-        font-size: 2.8rem;
+    .txt_cadstr, .txt_estq, .txt_funcn, .txt_prdts, .txt_vnds {
+        font-size: 2.2rem;
+        margin-top: 15px;
     }
 
     .txt_expl {
-        font-size: 1.1rem;
-        margin-top: 20px;
+        font-size: 1rem;
+        margin-top: 10px;
     }
 
-    .campos_estq {
-        margin-top: 20px;
-        margin-left: 100px;
-    }
-
-    .campos_prdts {
-        margin-top: auto;
-        margin-left: 100px;
-    }
-
-    .campos_vnds {
-        margin-top: auto;
-        margin-left: 100px;
-    }
-
-    .campos_funcn {
-        margin-top: auto;
-        margin-left: 100px;
+    .campos_estq, .campos_prdts, .campos_vnds, .campos_funcn {
+        margin-left: 5%;
     }
 
     .campos_baixo {
-        margin-left: 250px;
+        margin-left: 10%;
     }
 
-    .btn_slv_estq {
-        margin-left: 1150px;
-    }
-
-    .btn_slv_prdts {
-        margin-left: 1150px;
-    }
-
-    .btn_slv_vnds {
-        margin-left: 1150px;
-    }
-
-    .btn_slv_funcn {
-        margin-left: 1150px;
+    .btn_slv_estq, .btn_slv_prdts, .btn_slv_vnds, .btn_slv_funcn {
+        margin-left: 70%;
     }
 
     .logo {
         text-align: center;
-        margin-left: 600px;
+        margin-left: 35%;
     }
 
     .btn_acesb_fonte {
         margin-left: auto;
     }
+}
 
+/* Nova media query para telas muito grandes */
+@media (min-width: 1601px) {
+    .nav-itens {
+        margin-inline: 25%;
+        margin-top: 10px;
+    }
+
+    .txt_cadstr, .txt_estq, .txt_funcn, .txt_prdts, .txt_vnds {
+        font-size: 3rem;
+        margin-top: 30px;
+    }
+
+    .txt_expl {
+        font-size: 1.2rem;
+        margin-top: 25px;
+    }
+
+    .campos_estq, .campos_prdts, .campos_vnds, .campos_funcn {
+        margin-top: auto;
+        margin-left: 15%;
+    }
+
+    .campos_baixo {
+        margin-left: 30%;
+    }
+
+    .btn_slv_estq, .btn_slv_prdts, .btn_slv_vnds, .btn_slv_funcn {
+        margin-left: 60%;
+    }
+
+    .logo {
+        text-align: center;
+        margin-left: 40%;
+    }
+
+    .btn_acesb_fonte {
+        margin-left: auto;
+    }
+}
+
+/* Nova media query para telas muito pequenas */
+@media (max-width: 1024px) {
+    .nav-itens {
+        margin-inline: 5%;
+        margin-top: 10px;
+    }
+
+    .txt_cadstr, .txt_estq, .txt_funcn, .txt_prdts, .txt_vnds {
+        font-size: 2rem;
+        margin-top: 10px;
+    }
+
+    .txt_expl {
+        font-size: 1rem;
+        margin-top: 5px;
+    }
+
+    .campos_estq, .campos_prdts, .campos_vnds, .campos_funcn {
+        margin-left: 2%;
+    }
+
+    .campos_baixo {
+        margin-left: 5%;
+    }
+
+    .btn_slv_estq, .btn_slv_prdts, .btn_slv_vnds, .btn_slv_funcn {
+        margin-left: 60%;
+    }
+
+    .logo {
+        text-align: center;
+        margin-left: 30%;
+    }
+
+    .btn_acesb_fonte {
+        margin-left: auto;
+    }
 }

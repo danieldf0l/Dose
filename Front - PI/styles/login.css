@@ -17,7 +17,7 @@
 body {
 
     background-color: var(--cinza);
-    color: 232020;
+    color: #232020;
 }
 
 .footer {
@@ -31,14 +31,12 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
 }
 
 .logo {
-    margin-left: 780px;
+    margin: 0 auto;
     font-family: poppinsmedium;
     font-size: 40px;
     color: var(--cinza);
@@ -49,7 +47,7 @@ body {
 }
 
 
-.azao {
+.azao, .azinho {
     padding: 5px 5px;
     font-size: 13px;
     background-color: var(--cinza);
@@ -60,24 +58,7 @@ body {
     transition: 0.5s background;
 }
 
-.azao:hover {
-    background-color: var(--cinzaescuro);
-    color: var(--cinza);
-    transition: 0.3s background;
-}
-
-.azinho {
-    padding: 5px 5px;
-    font-size: 13px;
-    background-color: var(--cinza);
-    border: none;
-    color: var(--verdemusgo);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.5s background;
-}
-
-.azinho:hover {
+.azao:hover, .azinho:hover {
     background-color: var(--cinzaescuro);
     color: var(--cinza);
     transition: 0.3s background;
@@ -105,12 +86,12 @@ form label {
 form input {
     margin-top: 2px;
     height: 62px;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     padding: 10px;
     border-radius: 13px;
     border: none;
     font-size: 1rem;
-    margin-right: 20px;
     font-family: poppinslight;
 }
 
@@ -118,9 +99,9 @@ form input {
     display: inline-block;
     text-align: center;
     margin-top: 20px;
-    margin-left: 280px;
-    height: 45px;
-    width: 120px;
+    height: 50px;
+    width: 100%;
+    max-width: 400px;
     border-radius: 10px;
     border: none;
     font-size: 18px;
@@ -129,9 +110,7 @@ form input {
     background-color: var(--verdemusgo);
     cursor: pointer;
     text-decoration: none;
-    /* Remove o sublinhado do link */
     line-height: 45px;
-    /* Centraliza o texto verticalmente */
     transition: 0.5s background;
 }
 
@@ -141,7 +120,6 @@ form input {
 }
 
 img {
-    scale: 125%;
     width: 100%;
 }
 

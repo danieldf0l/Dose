@@ -18,7 +18,7 @@
 
 body {
     background-color: var(--cinza);
-    color: 232020;
+    color: #232020;
 }
 
 nav {
@@ -151,6 +151,13 @@ nav {
     border-radius: 15px;
     text-align: center;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.2s
+}
+
+.card:hover {
+    transform: scale(1.05);
 }
 
 .card>img{
