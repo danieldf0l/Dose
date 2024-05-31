@@ -202,6 +202,13 @@ form input {
     gap: 10px;
 }
 
+.campos_cima {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 10px;
+}
+
 footer {
     position: fixed;
     bottom: 0;
