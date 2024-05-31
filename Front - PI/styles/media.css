@@ -1,13 +1,11 @@
-/* Media queries existentes com ajustes */
 @media (max-width: 1600px) {
     .nav-itens {
-        margin-inline: 20%;
-        margin-top: 10px;
+        margin-inline: 0;
     }
-
-    .txt_cadstr, .txt_estq, .txt_funcn, .txt_prdts, .txt_vnds {
-        font-size: 2.5rem;
-        margin-top: 20px;
+    
+    .txt_estq, .txt_funcn, .txt_prdts, .txt_vnds {
+        font-size: 3.2rem;
+        margin-top: 5px;
     }
 
     .txt_expl {
@@ -29,8 +27,7 @@
     }
 
     .logo {
-        text-align: center;
-        margin-left: 37%;
+        margin-left: 10px;
     }
 
     .btn_acesb_fonte {
@@ -40,13 +37,12 @@
 
 @media (max-width: 1280px) {
     .nav-itens {
-        margin-inline: 10%;
-        margin-top: 10px;
+        margin-inline: 0;
     }
 
-    .txt_cadstr, .txt_estq, .txt_funcn, .txt_prdts, .txt_vnds {
-        font-size: 2.2rem;
-        margin-top: 15px;
+    .txt_estq, .txt_funcn, .txt_prdts, .txt_vnds {
+        font-size: 3.2rem;
+        margin-top: 5px;
     }
 
     .txt_expl {
@@ -67,8 +63,7 @@
     }
 
     .logo {
-        text-align: center;
-        margin-left: 35%;
+        margin-left: 10px;
     }
 
     .btn_acesb_fonte {
@@ -76,16 +71,14 @@
     }
 }
 
-/* Nova media query para telas muito grandes */
 @media (min-width: 1601px) {
     .nav-itens {
-        margin-inline: 25%;
-        margin-top: 10px;
+        margin-inline: 0;
     }
 
-    .txt_cadstr, .txt_estq, .txt_funcn, .txt_prdts, .txt_vnds {
-        font-size: 3rem;
-        margin-top: 30px;
+    .txt_estq, .txt_funcn, .txt_prdts, .txt_vnds {
+        font-size: 3.2rem;
+        margin-top: 5px;
     }
 
     .txt_expl {
@@ -107,8 +100,7 @@
     }
 
     .logo {
-        text-align: center;
-        margin-left: 40%;
+        margin-left: 10px;
     }
 
     .btn_acesb_fonte {
@@ -116,16 +108,14 @@
     }
 }
 
-/* Nova media query para telas muito pequenas */
 @media (max-width: 1024px) {
     .nav-itens {
-        margin-inline: 5%;
-        margin-top: 10px;
+        margin-inline: 0;
     }
 
-    .txt_cadstr, .txt_estq, .txt_funcn, .txt_prdts, .txt_vnds {
-        font-size: 2rem;
-        margin-top: 10px;
+    .txt_estq, .txt_funcn, .txt_prdts, .txt_vnds {
+        font-size: 3.2rem;
+        margin-top: 5px;
     }
 
     .txt_expl {
@@ -146,8 +136,7 @@
     }
 
     .logo {
-        text-align: center;
-        margin-left: 30%;
+        margin-left: 10px;
     }
 
     .btn_acesb_fonte {
