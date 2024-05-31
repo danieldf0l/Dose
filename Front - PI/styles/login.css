@@ -28,24 +28,27 @@ body {
     background-color: var(--verdemusgo);
     height: 75px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
 }
 
-.logo {
-    margin: 0 auto;
+.logo_login {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     font-family: poppinsmedium;
     font-size: 40px;
     color: var(--cinza);
 }
 
-.btn_acesb_fonte {
-    margin-right: 80px;
+.btn_acesb_fonte_login {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    gap: 5px; /* Espaçamento entre os botões, se necessário */
 }
-
 
 .azao, .azinho {
     padding: 5px 5px;

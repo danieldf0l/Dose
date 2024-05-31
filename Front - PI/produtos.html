@@ -8,10 +8,8 @@
     <link rel="stylesheet" href="./styles/produtos.css">
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/media.css">
-
-
+    <script src="scripts/script.js" defer></script>
 </head>
-
 <body>
     <nav>
         <div class="logo">Taverna do Vale</div>
@@ -22,13 +20,11 @@
                 <li class="link_prdts"><a href="./produtos.html">Produtos</a></li>
                 <li><a href="./funcionario.html">Funcionários</a></li>
                 <li><a href="./home.html"><button class="home">Home</button></a></li>
-
             </ul>
         </div>
         <div class="btn_acesb_fonte">
             <button id="azao" class="azao">+Aa</button>
             <button id="azinho" class="azinho">-Aa</button>
-
             <script>
                 var tamanhoFonte = 1; // tamanho inicial em rem
                 var tamanhoMax = 1.3; // tamanho máximo em rem
@@ -54,9 +50,7 @@
             </script>
         </div>
     </nav>
-
     <main>
-
         <h2 class="txt_cadstr">Cadastrar</h2>
         <h2 class="txt_prdts">Produtos</h2>
         <p class="txt_expl">
@@ -64,7 +58,6 @@
             Coloque o nome do produto, insira o valor, cadastre o código do produto e indique o tipo de Produto.
             Depois, clique em "Salvar" para que sua venda seja cadastrada.
         </p>
-
         <form class="campos_prdts">
             <div class="campos_cima">
                 <label for="nome-produto">Nome do Produto</label>
@@ -76,13 +69,11 @@
                 <label for="codigo-produto">Código</label>
                 <input type="text" id="codigo-produto" name="codigo-produto" placeholder="ID do Produto" required>
                 <label for="tipo-produto">Tipo</label>
-                <input type="text" id="tipo-produto" name="tipo-produto" placeholder="Cerveja/Vinho/Energético/Whisky"
-                    required>
+                <input type="text" id="tipo-produto" name="tipo-produto" placeholder="Cerveja/Vinho/Energético/Whisky"required>
+                <button class="btn_slv_prdts">Salvar</button>
             </div>
         </form>
-        <button class="btn_slv_prdts">Salvar</button>
     </main>
     <footer></footer>
 </body>
-
 </html>

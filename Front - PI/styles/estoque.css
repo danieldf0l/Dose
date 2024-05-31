@@ -88,7 +88,7 @@ nav {
     margin-left: auto;
     display: flex;
     gap: 10px;
-    margin-right: 40px; /* Adiciona um espaço à direita */
+    margin-right: 40px;
 }
 
 .azao {
@@ -154,7 +154,9 @@ form {
 }
 
 form label {
-    width: 50%;
+    width: 100%;
+    min-width: 150px;
+    white-space: nowrap;
     display: block;
     margin-bottom: 5px;
     margin-top: 10px;
@@ -198,7 +200,6 @@ form input {
     width: fit-content;
     gap: 10px;
 }
-
 
 footer {
     position: fixed;

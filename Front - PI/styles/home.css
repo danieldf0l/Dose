@@ -23,7 +23,7 @@ body {
 
 nav {
     display: flex;
-    justify-content: baseline;
+    justify-content: space-between;
     font-family: poppinsregular;
     margin-top: 30px;
     align-items: center;
@@ -32,7 +32,7 @@ nav {
 .nav-itens {
     list-style: none;
     display: flex;
-    margin-inline: 450px;
+    gap: 20px;
 }
 
 .nav-itens>li>a {
@@ -40,7 +40,12 @@ nav {
     color: #232020;
     text-decoration: none;
     transition: 0.5s color;
-    /* Definindo a cor padrão da navbar*/
+}
+
+.links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .logo {
@@ -86,7 +91,10 @@ nav {
 }
 
 .btn_acesb_fonte {
-    margin-left: 10px;
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+    margin-right: 40px;
 }
 
 .azao {

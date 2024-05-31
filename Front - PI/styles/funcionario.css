@@ -46,14 +46,14 @@ nav {
     transition: 0.3s color;
 }
 
+.link_funcn>a {
+    color: #aaaaaa !important;
+}
+
 .links {
     flex: 1;
     display: flex;
     justify-content: center;
-}
-
-.link_funcn>a {
-    color: #aaaaaa !important;
 }
 
 .logo {
@@ -88,7 +88,7 @@ nav {
     margin-left: auto;
     display: flex;
     gap: 10px;
-    margin-right: 20px; /* Adiciona um espaço à direita */
+    margin-right: 40px;
 }
 
 .azao {
@@ -154,44 +154,35 @@ form {
 }
 
 form label {
+    width: 100%;
+    min-width: 150px;
+    white-space: nowrap;
     display: block;
     margin-bottom: 5px;
     margin-top: 10px;
     font-size: 1.4375rem;
-    ;
     font-family: poppinsregular;
 }
 
 form input {
-    margin-top: 2px;
     height: 62px;
     width: 400px;
     padding: 10px;
     border-radius: 16px;
     border: none;
     font-size: 1rem;
-    margin-right: 20px;
     font-family: poppinslight;
 }
 
-.campos_cima {
-    margin-left: 100px;
-}
-
-.campos_baixo {
-    margin-left: 400px;
-}
 
 .btn_slv_funcn {
+    align-self: flex-end;
     margin-top: 15px;
-    margin-left: 1400px;
     height: 45px;
     width: 120px;
-    padding: 10px;
     border-radius: 10px;
     border: none;
     font-size: 18px;
-    margin-right: 20px;
     font-family: poppinslight;
     color: var(--cinza);
     background-color: var(--verdemusgo);
@@ -202,6 +193,13 @@ form input {
 .btn_slv_funcn:hover {
     background-color: var(--marrom);
     transition: 0.3s background;
+}
+
+.campos_baixo {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 10px;
 }
 
 footer {
