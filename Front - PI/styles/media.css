@@ -13,6 +13,10 @@
         margin-top: 20px;
     }
 
+    .txt_cadstr{
+        margin-top: 40px;
+    }
+
     .campos_estq, .campos_prdts, .campos_vnds, .campos_funcn {
         margin-top: auto;
         margin-left: 5%;
@@ -48,6 +52,10 @@
     .txt_expl {
         font-size: 1rem;
         margin-top: 10px;
+    }
+
+    .txt_cadstr{
+        margin-top: 40px;
     }
 
     .campos_estq, .campos_prdts, .campos_vnds, .campos_funcn {
@@ -86,6 +94,10 @@
         margin-top: 25px;
     }
 
+    .txt_cadstr{
+        margin-top: 40px;
+    }
+
     .campos_estq, .campos_prdts, .campos_vnds, .campos_funcn {
         margin-top: auto;
         margin-left: 15%;
@@ -121,6 +133,10 @@
     .txt_expl {
         font-size: 1rem;
         margin-top: 5px;
+    }
+
+    .txt_cadstr{
+        margin-top: 40px;
     }
 
     .campos_estq, .campos_prdts, .campos_vnds, .campos_funcn {
