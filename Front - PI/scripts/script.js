@@ -5,8 +5,9 @@ var InputCargoFuncionario = document.querySelector("#cargo-funcionario");
 var InputHorarioSaida = document.querySelector("#horario-saida");
 
 console.log(InputNomeFuncionario);
-function cadastrarFuncionario(){
-    fetch("http://localhost:8080/funcionario", 
+formulario.addEventListener("submit", (event) => {
+    //event.preventDefault();
+    fetch("http://localhost:8080/funcionario/submit", 
     {
         headers: {
             'Accept': 'application/json',
@@ -14,18 +15,13 @@ function cadastrarFuncionario(){
         },
         method: "POST",
         body: JSON.stringify({
-            nomeFuncionario: InputNomeFuncionario,
-            horarioEntrada: InputHorarioEntrada,
-            cargoFuncionario: InputCargoFuncionario,
-            horarioSaida: InputHorarioSaida
+            nomeFuncionario: InputNomeFuncionario.value,
+            horarioEntrada: InputHorarioEntrada.value,
+            cargoFuncionario: InputCargoFuncionario.value,
+            horarioSaida: InputHorarioSaida.value
         })
     })
     .then(function (res) {console.log(res)})
     .catch(function (res) {console.log(res)})
-};
-
-formulario[0].addEventListener('submit', function (event){
-    event.preventDefault();
-    console.log(InputNomeFuncionario.value);
-    //cadastrarFuncionario();
-});
+    alert("enviou hein")
+})
