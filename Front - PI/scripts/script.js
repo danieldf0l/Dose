@@ -23,5 +23,4 @@ formulario.addEventListener("submit", (event) => {
     })
     .then(function (res) {console.log(res)})
     .catch(function (res) {console.log(res)})
-    alert("enviou hein")
 })
