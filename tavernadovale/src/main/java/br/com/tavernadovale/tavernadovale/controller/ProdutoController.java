@@ -19,46 +19,62 @@ import br.com.tavernadovale.tavernadovale.dao.IProduto;
 import br.com.tavernadovale.tavernadovale.model.Produto;
 
 @RestController
-@CrossOrigin("*")
-@RequestMapping("/produto")
+@CrossOrigin({"*"})
+@RequestMapping({"/produto"})
 public class ProdutoController {
+   @Autowired
+   private IProduto dao;
 
-    @Autowired
-    private IProduto dao;
+   public ProdutoController() {}
 
-    @GetMapping()
-    public List<Produto> listarProduto(){
-        return (List<Produto>) dao.findAll();
-    }
-    
-    @PostMapping
-    public Produto criarProduto(@RequestBody Produto produto){
-        Produto produtoNovo = dao.save(produto);
-        return produtoNovo;
-    }
+   @GetMapping
+   public List<Produto> listarProduto() {
+      return (List<Produto>) this.dao.findAll();
+   }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Produto> editarProduto(@PathVariable("id") Integer idProduto, @RequestBody Produto produtoAtualizado) {
-        Optional<Produto> produtoExistente = dao.findById(idProduto);
+   // ✅ GET por ID
+   @GetMapping("/{id}")
+   public ResponseEntity<Produto> buscarPorId(@PathVariable("id") Integer idProduto) {
+      Optional<Produto> produto = this.dao.findById(idProduto);
+      return produto.map(ResponseEntity::ok)
+                    .orElseGet(() -> ResponseEntity.notFound().build());
+   }
 
-        if (produtoExistente.isPresent()) {
-            Produto produto = produtoExistente.get();
-            
-            produto.setNome_produto(produtoAtualizado.getNome_produto());
-            produto.setTipo_produto(produtoAtualizado.getTipo_produto());
-            produto.setValor_produto(produtoAtualizado.getValor_produto());
-            
-            Produto produtoSalvo = dao.save(produto);
-            return ResponseEntity.ok(produtoSalvo);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+   // ✅ GET por Nome
+   @GetMapping("/nome/{nome}")
+   public ResponseEntity<List<Produto>> buscarPorNome(@PathVariable("nome") String nome) {
+      List<Produto> produtos = this.dao.findByNome_produtoContainingIgnoreCase(nome);
+      if (produtos.isEmpty()) {
+         return ResponseEntity.noContent().build();
+      }
+      return ResponseEntity.ok(produtos);
+   }
 
-    @DeleteMapping("/{id}")
-    public Optional<Produto> exlcuirProduto(@PathVariable("id") Integer idProduto){
-        Optional<Produto> produto = dao.findById(idProduto);
-        dao.deleteById(idProduto);
-        return produto;
-    }
+   @PostMapping
+   public Produto criarProduto(@RequestBody Produto produto) {
+      Produto produtoNovo = this.dao.save(produto);
+      return produtoNovo;
+   }
+
+   @PutMapping({"/{id}"})
+   public ResponseEntity<Produto> editarProduto(@PathVariable("id") Integer idProduto, @RequestBody Produto produtoAtualizado) {
+      Optional<Produto> produtoExistente = this.dao.findById(idProduto);
+      if (produtoExistente.isPresent()) {
+         Produto produto = produtoExistente.get();
+         produto.setNome_produto(produtoAtualizado.getNome_produto());
+         produto.setTipo_produto(produtoAtualizado.getTipo_produto());
+         produto.setValor_produto(produtoAtualizado.getValor_produto());
+         Produto produtoSalvo = this.dao.save(produto);
+         return ResponseEntity.ok(produtoSalvo);
+      } else {
+         return ResponseEntity.notFound().build();
+      }
+   }
+
+   @DeleteMapping({"/{id}"})
+   public Optional<Produto> excluirProduto(@PathVariable("id") Integer idProduto) {
+      Optional<Produto> produto = this.dao.findById(idProduto);
+      this.dao.deleteById(idProduto);
+      return produto;
+   }
 }
