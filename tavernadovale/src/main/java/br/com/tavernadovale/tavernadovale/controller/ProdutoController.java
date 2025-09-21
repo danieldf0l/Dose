@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,14 +37,26 @@ public class ProdutoController {
         return produtoNovo;
     }
 
-    @PutMapping
-    public Produto editarProduto(@RequestBody Produto produto){
-        Produto novoProduto = dao.save(produto);
-        return novoProduto;
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> editarProduto(@PathVariable("id") Integer idProduto, @RequestBody Produto produtoAtualizado) {
+        Optional<Produto> produtoExistente = dao.findById(idProduto);
+
+        if (produtoExistente.isPresent()) {
+            Produto produto = produtoExistente.get();
+            
+            produto.setNome_produto(produtoAtualizado.getNome_produto());
+            produto.setTipo_produto(produtoAtualizado.getTipo_produto());
+            produto.setValor_produto(produtoAtualizado.getValor_produto());
+            
+            Produto produtoSalvo = dao.save(produto);
+            return ResponseEntity.ok(produtoSalvo);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @DeleteMapping
-    public Optional<Produto> exlcuirProduto(@PathVariable Integer idProduto){
+    @DeleteMapping("/{id}")
+    public Optional<Produto> exlcuirProduto(@PathVariable("id") Integer idProduto){
         Optional<Produto> produto = dao.findById(idProduto);
         dao.deleteById(idProduto);
         return produto;

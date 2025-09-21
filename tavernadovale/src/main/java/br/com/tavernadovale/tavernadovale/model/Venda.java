@@ -16,19 +16,19 @@ public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_venda", nullable = true)
-    public int id_venda;
+    protected int id_venda;
     
     @Column(name = "valor_parcial", nullable = true)
-    public double valor_parcial_venda;
+    protected double valor_parcial_venda;
     
     @Column(name = "valor_final", nullable = true)
-    public double valor_final_venda;
+    protected double valor_final_venda;
     
     @Column(name = "forma_pagamento", length = 45, nullable = true)
-    public String forma_pagamento_venda;
+    protected String forma_pagamento_venda;
     
     @Column(name = "data_venda", nullable = true)
-    public Timestamp data_hora_venda;
+    protected Timestamp data_hora_venda;
 
     public int getId_venda() {
         return id_venda;

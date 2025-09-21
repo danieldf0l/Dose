@@ -16,19 +16,19 @@ public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_funcionario", nullable = true)
-    public int id_funcionario;
+    protected int id_funcionario;
     
     @Column(name = "cargo_funcionario", length = 25,nullable = true)
-    public String cargo_funcionario;
+    protected String cargo_funcionario;
     
     @Column(name = "horario_entrada", nullable = true)
-    public Time horario_entrada;
+    protected Time horario_entrada;
     
     @Column(name = "horario_saida", nullable = true)
-    public Time horario_saida;
+    protected Time horario_saida;
     
     @Column(name = "nome_funcionario", length = 100, nullable = true)
-    public String nome_funcionario;
+    protected String nome_funcionario;
 
     public int getId_funcionario() {
         return id_funcionario;
@@ -46,14 +46,6 @@ public class Funcionario {
         this.cargo_funcionario = cargo;
     }
 
-    public Time getHorario_entrada() {
-        return horario_entrada;
-    }
-
-    public void setHorario_entrada(Time horario_entrada) {
-        this.horario_entrada = horario_entrada;
-    }
-
     public Time getHorario_saida() {
         return horario_saida;
     }
@@ -68,6 +60,14 @@ public class Funcionario {
 
     public void setNome_funcionario(String nome) {
         this.nome_funcionario = nome;
+    }
+
+    public void setHorario_entrada(Time horario_entrada) {
+        this.horario_entrada = horario_entrada;
+    }
+
+    public Time getHorario_entrada() {
+        return horario_entrada;
     }
 
 }

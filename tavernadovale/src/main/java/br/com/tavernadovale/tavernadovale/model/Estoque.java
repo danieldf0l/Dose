@@ -16,19 +16,19 @@ public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_registro_estoque")
-    public int id_produto_estoque;
+    protected int id_produto_estoque;
  
     @Column(name = "fk_id_produto", nullable = true)
-    public int fk_id_produto;
+    protected int fk_id_produto;
 
     @Column(name = "quantidade_lote", nullable = true)
-    public int quantidade_lote;
+    protected int quantidade_lote;
     
     @Column(name = "data_validade", nullable = true)
-    public Date data_validade;
+    protected Date data_validade;
     
     @Column(name = "numero_lote", length = 25, nullable = true)
-    public String numero_lote;
+    protected String numero_lote;
 
     public int getId_produto_estoque() {
         return id_produto_estoque;

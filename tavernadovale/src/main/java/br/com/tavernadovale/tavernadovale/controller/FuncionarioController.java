@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,14 +37,27 @@ public class FuncionarioController{
         return funcionarioNovo;
     }
 
-    @PutMapping
-    public Funcionario editarFuncionario(@RequestBody Funcionario funcionario){
-        Funcionario novoFuncionario = dao.save(funcionario);
-        return novoFuncionario;
+    @PutMapping("/{id}")
+    public ResponseEntity<Funcionario> editarFuncionario(@PathVariable("id") Integer idfuncionario, @RequestBody Funcionario funcionarioAtualizado) {
+        Optional<Funcionario> funcionarioExistente = dao.findById(idfuncionario);
+
+        if (funcionarioExistente.isPresent()) {
+            Funcionario funcionario = funcionarioExistente.get();
+            
+            funcionario.setNome_funcionario(funcionarioAtualizado.getNome_funcionario());
+            funcionario.setCargo_funcionario(funcionarioAtualizado.getCargo_funcionario());
+            funcionario.setHorario_entrada(funcionarioAtualizado.getHorario_entrada());
+            funcionario.setHorario_saida(funcionarioAtualizado.getHorario_saida());
+            
+            Funcionario FuncionarioSalvo = dao.save(funcionario);
+            return ResponseEntity.ok(FuncionarioSalvo);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @DeleteMapping
-    public Optional<Funcionario> exlcuirFuncionario(@PathVariable Integer idFuncionario){
+    @DeleteMapping("/{id}")
+    public Optional<Funcionario> exlcuirFuncionario(@PathVariable("id") Integer idFuncionario){
         Optional<Funcionario> funcionario = dao.findById(idFuncionario);
         dao.deleteById(idFuncionario);
         return funcionario;

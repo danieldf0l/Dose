@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,14 +37,26 @@ public class VendaController {
         return vendaNovo;
     }
 
-    @PutMapping
-    public Venda editarVenda(@RequestBody Venda venda){
-        Venda novoVenda = dao.save(venda);
-        return novoVenda;
+    @PutMapping("/{id}")
+    public ResponseEntity<Venda> editarVenda(@PathVariable("id") Integer idVenda, @RequestBody Venda vendaAtualizada) {
+        Optional<Venda> vendaExistente = dao.findById(idVenda);
+
+        if (vendaExistente.isPresent()) {
+            Venda venda = vendaExistente.get();
+            
+            venda.setData_venda(vendaAtualizada.getData_hora_venda());
+            venda.setForma_pagamento_venda(vendaAtualizada.getForma_pagamento_venda());
+            venda.setValor_final_venda(vendaAtualizada.getValor_final_venda());
+            
+            Venda produtoSalvo = dao.save(venda);
+            return ResponseEntity.ok(produtoSalvo);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @DeleteMapping
-    public Optional<Venda> exlcuirVenda(@PathVariable Integer idVenda){
+    @DeleteMapping("/{id}")
+    public Optional<Venda> exlcuirVenda(@PathVariable("id") Integer idVenda){
         Optional<Venda> venda = dao.findById(idVenda);
         dao.deleteById(idVenda);
         return venda;

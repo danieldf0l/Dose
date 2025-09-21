@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,14 +37,28 @@ public class EstoqueController {
         return estoqueNovo;
     }
 
-    @PutMapping
-    public Estoque editarEstoque(@RequestBody Estoque estoque){
-        Estoque novoEstoque = dao.save(estoque);
-        return novoEstoque;
+    @PutMapping("/{id}")
+    public ResponseEntity<Estoque> editarEstoque(@PathVariable("id") Integer idEstoque, @RequestBody Estoque estoqueAtualizado) {
+        Optional<Estoque> estoqueExistente = dao.findById(idEstoque);
+
+        if (estoqueExistente.isPresent()) {
+            Estoque estoque = estoqueExistente.get();
+            
+            estoque.setId_produto_estoque(estoqueAtualizado.getId_produto_estoque());
+            estoque.setFk_id_produto(estoqueAtualizado.getFk_id_produto());
+            estoque.setQuantidade_lote(estoqueAtualizado.getQuantidade_lote());
+            estoque.setData_validade(estoqueAtualizado.getData_validade());
+            estoque.setNumero_lote(estoqueAtualizado.getNumero_lote());
+
+            Estoque EstoqueSalvo = dao.save(estoque);
+            return ResponseEntity.ok(EstoqueSalvo);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @DeleteMapping
-    public Optional<Estoque> exlcuirEstoque(@PathVariable Integer idEstoque){
+    @DeleteMapping("/{id}")
+    public Optional<Estoque> exlcuirEstoque(@PathVariable("id") Integer idEstoque){
         Optional<Estoque> estoque = dao.findById(idEstoque);
         dao.deleteById(idEstoque);
         return estoque;

@@ -1,6 +1,5 @@
 package br.com.tavernadovale.tavernadovale.model;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,16 +14,16 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_produto", nullable = true)
-    int id_produto;
+    protected int id_produto;
     
     @Column(name = "nome_produto", length = 45, nullable = true)
-    String nome_produto;
+    protected String nome_produto;
     
     @Column(name = "valor_produto", nullable = true)
-    Float valor_produto;
+    protected Float valor_produto;
     
     @Column(name = "tipo_produto", length = 45, nullable = true)
-    String tipo_produto;
+    protected String tipo_produto;
 
     public int getId_produto() {
         return id_produto;
@@ -41,7 +40,6 @@ public class Produto {
     public void setNome_produto(String nome_produto) {
         this.nome_produto = nome_produto;
     }
-
 
     public Float getValor_produto() {
         return valor_produto;
