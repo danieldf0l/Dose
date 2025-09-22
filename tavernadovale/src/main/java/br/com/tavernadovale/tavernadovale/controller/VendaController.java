@@ -27,12 +27,20 @@ public class VendaController {
     private IVenda dao;
 
     @GetMapping()
-    public List<Venda> listarVenda(){
+    public List<Venda> listarVenda() {
         return (List<Venda>) dao.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Venda> buscarPorId(@PathVariable int id) {
+        return dao.findById(id)
+                .map(venda -> ResponseEntity.ok(venda))
+                .orElse(ResponseEntity.notFound().build());
+    }
+    
     @PostMapping
-    public Venda criarVenda(@RequestBody Venda venda){
+
+    public Venda criarVenda(@RequestBody Venda venda) {
         Venda vendaNovo = dao.save(venda);
         return vendaNovo;
     }
@@ -43,11 +51,11 @@ public class VendaController {
 
         if (vendaExistente.isPresent()) {
             Venda venda = vendaExistente.get();
-            
+
             venda.setData_venda(vendaAtualizada.getData_hora_venda());
             venda.setForma_pagamento_venda(vendaAtualizada.getForma_pagamento_venda());
             venda.setValor_final_venda(vendaAtualizada.getValor_final_venda());
-            
+
             Venda produtoSalvo = dao.save(venda);
             return ResponseEntity.ok(produtoSalvo);
         } else {
@@ -56,7 +64,7 @@ public class VendaController {
     }
 
     @DeleteMapping("/{id}")
-    public Optional<Venda> exlcuirVenda(@PathVariable("id") Integer idVenda){
+    public Optional<Venda> exlcuirVenda(@PathVariable("id") Integer idVenda) {
         Optional<Venda> venda = dao.findById(idVenda);
         dao.deleteById(idVenda);
         return venda;

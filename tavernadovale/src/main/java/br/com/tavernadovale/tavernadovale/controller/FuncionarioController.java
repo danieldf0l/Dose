@@ -31,6 +31,13 @@ public class FuncionarioController{
         return (List<Funcionario>) dao.findAll();
     }
 
+@GetMapping("/{id}")
+    public ResponseEntity<Funcionario> buscarPorId(@PathVariable int id) {
+        return dao.findById(id)
+                .map(funcionario -> ResponseEntity.ok(funcionario))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     public Funcionario criarFuncionario(@RequestBody Funcionario funcionario){
         Funcionario funcionarioNovo = dao.save(funcionario);

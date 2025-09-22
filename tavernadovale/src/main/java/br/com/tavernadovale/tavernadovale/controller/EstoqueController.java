@@ -31,6 +31,13 @@ public class EstoqueController {
         return (List<Estoque>) dao.findAll();
     }
 
+@GetMapping("/{id}")
+    public ResponseEntity<Estoque> buscarPorId(@PathVariable int id) {
+        return dao.findById(id)
+                .map(estoque -> ResponseEntity.ok(estoque))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     public Estoque criarEstoque(@RequestBody Estoque estoque){
         Estoque estoqueNovo = dao.save(estoque);
