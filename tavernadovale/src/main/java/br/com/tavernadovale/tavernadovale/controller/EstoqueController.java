@@ -15,59 +15,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.tavernadovale.tavernadovale.dao.IEstoque;
 import br.com.tavernadovale.tavernadovale.model.Estoque;
+import br.com.tavernadovale.tavernadovale.service.EstoqueService;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/estoque")
 public class EstoqueController {
-    
+
     @Autowired
-    private IEstoque dao;
+    private EstoqueService service;
 
     @GetMapping()
-    public List<Estoque> listarEstoque(){
-        return (List<Estoque>) dao.findAll();
+    public List<Estoque> listarEstoque() {
+        return service.listarEstoque();
     }
 
-@GetMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Estoque> buscarPorId(@PathVariable int id) {
-        return dao.findById(id)
-                .map(estoque -> ResponseEntity.ok(estoque))
-                .orElse(ResponseEntity.notFound().build());
+        return service.buscarPorId(id);
     }
 
     @PostMapping
-    public Estoque criarEstoque(@RequestBody Estoque estoque){
-        Estoque estoqueNovo = dao.save(estoque);
-        return estoqueNovo;
+    public Estoque criarEstoque(@RequestBody Estoque estoque) {
+        return service.criarEstoque(estoque);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Estoque> editarEstoque(@PathVariable("id") Integer idEstoque, @RequestBody Estoque estoqueAtualizado) {
-        Optional<Estoque> estoqueExistente = dao.findById(idEstoque);
+        return service.editarEstoque(idEstoque,estoqueAtualizado);
 
-        if (estoqueExistente.isPresent()) {
-            Estoque estoque = estoqueExistente.get();
-            
-            estoque.setId_produto_estoque(estoqueAtualizado.getId_produto_estoque());
-            estoque.setFk_id_produto(estoqueAtualizado.getFk_id_produto());
-            estoque.setQuantidade_lote(estoqueAtualizado.getQuantidade_lote());
-            estoque.setData_validade(estoqueAtualizado.getData_validade());
-            estoque.setNumero_lote(estoqueAtualizado.getNumero_lote());
-
-            Estoque EstoqueSalvo = dao.save(estoque);
-            return ResponseEntity.ok(EstoqueSalvo);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
     }
 
     @DeleteMapping("/{id}")
-    public Optional<Estoque> exlcuirEstoque(@PathVariable("id") Integer idEstoque){
-        Optional<Estoque> estoque = dao.findById(idEstoque);
-        dao.deleteById(idEstoque);
-        return estoque;
+    public Optional<Estoque> exlcuirEstoque(@PathVariable("id") Integer idEstoque) {
+        return service.exlcuirEstoque(idEstoque);
     }
 }

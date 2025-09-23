@@ -15,58 +15,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.tavernadovale.tavernadovale.dao.IFuncionario;
 import br.com.tavernadovale.tavernadovale.model.Funcionario;
+import br.com.tavernadovale.tavernadovale.service.FuncionarioService;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/funcionario")
-public class FuncionarioController{
+public class FuncionarioController {
 
     @Autowired
-    private IFuncionario dao;
+    private FuncionarioService service;
 
     @GetMapping()
-    public List<Funcionario> listarFuncionario(){
-        return (List<Funcionario>) dao.findAll();
+    public List<Funcionario> listarFuncionario() {
+        return service.listarFuncionario();
     }
 
-@GetMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Funcionario> buscarPorId(@PathVariable int id) {
-        return dao.findById(id)
-                .map(funcionario -> ResponseEntity.ok(funcionario))
-                .orElse(ResponseEntity.notFound().build());
+        return service.buscarPorId(id);
     }
 
     @PostMapping
-    public Funcionario criarFuncionario(@RequestBody Funcionario funcionario){
-        Funcionario funcionarioNovo = dao.save(funcionario);
-        return funcionarioNovo;
+    public Funcionario criarFuncionario(@RequestBody Funcionario funcionario) {
+        return service.criarFuncionario(funcionario);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Funcionario> editarFuncionario(@PathVariable("id") Integer idfuncionario, @RequestBody Funcionario funcionarioAtualizado) {
-        Optional<Funcionario> funcionarioExistente = dao.findById(idfuncionario);
-
-        if (funcionarioExistente.isPresent()) {
-            Funcionario funcionario = funcionarioExistente.get();
-            
-            funcionario.setNome_funcionario(funcionarioAtualizado.getNome_funcionario());
-            funcionario.setCargo_funcionario(funcionarioAtualizado.getCargo_funcionario());
-            funcionario.setHorario_entrada(funcionarioAtualizado.getHorario_entrada());
-            funcionario.setHorario_saida(funcionarioAtualizado.getHorario_saida());
-            
-            Funcionario FuncionarioSalvo = dao.save(funcionario);
-            return ResponseEntity.ok(FuncionarioSalvo);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return service.editarFuncionario(idfuncionario, funcionarioAtualizado);
     }
 
     @DeleteMapping("/{id}")
-    public Optional<Funcionario> exlcuirFuncionario(@PathVariable("id") Integer idFuncionario){
-        Optional<Funcionario> funcionario = dao.findById(idFuncionario);
-        dao.deleteById(idFuncionario);
-        return funcionario;
+    public Optional<Funcionario> exlcuirFuncionario(@PathVariable("id") Integer idFuncionario) {
+        return service.exlcuirFuncionario(idFuncionario);
     }
 }

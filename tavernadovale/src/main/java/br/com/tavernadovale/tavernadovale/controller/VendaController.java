@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.tavernadovale.tavernadovale.dao.IVenda;
 import br.com.tavernadovale.tavernadovale.model.Venda;
+import br.com.tavernadovale.tavernadovale.service.VendaService;
 
 @RestController
 @CrossOrigin("*")
@@ -24,49 +24,30 @@ import br.com.tavernadovale.tavernadovale.model.Venda;
 public class VendaController {
 
     @Autowired
-    private IVenda dao;
+    private VendaService service;
 
     @GetMapping()
     public List<Venda> listarVenda() {
-        return (List<Venda>) dao.findAll();
+        return service.listarVenda();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Venda> buscarPorId(@PathVariable int id) {
-        return dao.findById(id)
-                .map(venda -> ResponseEntity.ok(venda))
-                .orElse(ResponseEntity.notFound().build());
+        return service.buscarPorId(id);
     }
     
     @PostMapping
-
     public Venda criarVenda(@RequestBody Venda venda) {
-        Venda vendaNovo = dao.save(venda);
-        return vendaNovo;
+        return service.criarVenda(venda);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Venda> editarVenda(@PathVariable("id") Integer idVenda, @RequestBody Venda vendaAtualizada) {
-        Optional<Venda> vendaExistente = dao.findById(idVenda);
-
-        if (vendaExistente.isPresent()) {
-            Venda venda = vendaExistente.get();
-
-            venda.setData_venda(vendaAtualizada.getData_hora_venda());
-            venda.setForma_pagamento_venda(vendaAtualizada.getForma_pagamento_venda());
-            venda.setValor_final_venda(vendaAtualizada.getValor_final_venda());
-
-            Venda produtoSalvo = dao.save(venda);
-            return ResponseEntity.ok(produtoSalvo);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return service.editarVenda(idVenda, vendaAtualizada);
     }
 
     @DeleteMapping("/{id}")
     public Optional<Venda> exlcuirVenda(@PathVariable("id") Integer idVenda) {
-        Optional<Venda> venda = dao.findById(idVenda);
-        dao.deleteById(idVenda);
-        return venda;
+        return service.exlcuirVenda(idVenda);
     }
 }
