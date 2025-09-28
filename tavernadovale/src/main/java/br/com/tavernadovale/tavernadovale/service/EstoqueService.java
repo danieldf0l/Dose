@@ -30,6 +30,7 @@ public class EstoqueService {
     }
 
     public Estoque criarEstoque(Estoque estoque) {
+        // O objeto 'estoque' recebido aqui deve ter o 'produto' (com codigo_barras) preenchido
         Estoque estoqueNovo = repository.save(estoque);
         return estoqueNovo;
     }
@@ -40,8 +41,13 @@ public class EstoqueService {
         if (estoqueExistente.isPresent()) {
             Estoque estoque = estoqueExistente.get();
 
-            estoque.setId_produto_estoque(estoqueAtualizado.getId_produto_estoque());
-            estoque.setFk_id_produto(estoqueAtualizado.getFk_id_produto());
+            // CORREÇÃO: Removida a linha que tentava setar o ID do Estoque
+            // estoque.setId_produto_estoque(estoqueAtualizado.getId_produto_estoque()); 
+            
+            // CORREÇÃO: Atualizar o relacionamento com Produto
+            // setFk_id_produto() não existe mais, agora você usa setProduto()
+            estoque.setProduto(estoqueAtualizado.getProduto()); 
+            
             estoque.setQuantidade_lote(estoqueAtualizado.getQuantidade_lote());
             estoque.setData_validade(estoqueAtualizado.getData_validade());
             estoque.setNumero_lote(estoqueAtualizado.getNumero_lote());

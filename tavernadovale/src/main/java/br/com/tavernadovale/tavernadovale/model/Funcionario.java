@@ -1,6 +1,6 @@
 package br.com.tavernadovale.tavernadovale.model;
 
-import java.sql.Time;
+import java.time.LocalTime; // NOVA IMPORTAÇÃO
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,11 +21,13 @@ public class Funcionario {
     @Column(name = "cargo_funcionario", length = 25,nullable = true)
     protected String cargo_funcionario;
     
+    // ALTERADO: Usando o tipo LocalTime
     @Column(name = "horario_entrada", nullable = true)
-    protected Time horario_entrada;
+    protected LocalTime horario_entrada;
     
+    // ALTERADO: Usando o tipo LocalTime
     @Column(name = "horario_saida", nullable = true)
-    protected Time horario_saida;
+    protected LocalTime horario_saida;
     
     @Column(name = "nome_funcionario", length = 100, nullable = true)
     protected String nome_funcionario;
@@ -46,11 +48,13 @@ public class Funcionario {
         this.cargo_funcionario = cargo;
     }
 
-    public Time getHorario_saida() {
+    // ALTERADO: Getters e Setters agora usam LocalTime
+    public LocalTime getHorario_saida() {
         return horario_saida;
     }
 
-    public void setHorario_saida(Time horario_saida) {
+    // ALTERADO: Getters e Setters agora usam LocalTime
+    public void setHorario_saida(LocalTime horario_saida) {
         this.horario_saida = horario_saida;
     }
 
@@ -62,12 +66,13 @@ public class Funcionario {
         this.nome_funcionario = nome;
     }
 
-    public void setHorario_entrada(Time horario_entrada) {
+    // ALTERADO: Getters e Setters agora usam LocalTime
+    public void setHorario_entrada(LocalTime horario_entrada) {
         this.horario_entrada = horario_entrada;
     }
 
-    public Time getHorario_entrada() {
+    // ALTERADO: Getters e Setters agora usam LocalTime
+    public LocalTime getHorario_entrada() {
         return horario_entrada;
     }
-
 }

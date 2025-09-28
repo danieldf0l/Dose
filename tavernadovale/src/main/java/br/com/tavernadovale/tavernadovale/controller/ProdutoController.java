@@ -34,24 +34,30 @@ public class ProdutoController {
         return service.listarProduto();
     }
 
+    // ALTERADO: Recebe String (codigo_barras) em vez de int/Integer (id)
     @GetMapping("/{id}")
-    public ResponseEntity<Produto> buscarPorId(@PathVariable int id) {
-        return service.buscarPorId(id);
+    public ResponseEntity<Produto> buscarPorId(@PathVariable String id) {
+        // O Service também precisará ser atualizado para receber String
+        return service.buscarPorId(id); 
     }
 
     @PostMapping
     public Produto criarProduto(@RequestBody Produto produto) {
+        // O produto recebido no corpo do JSON agora deve ter o campo "codigo_barras"
         return service.criarProduto(produto);
-
     }
 
+    // ALTERADO: Recebe String (codigo_barras) em vez de Integer (idProduto)
     @PutMapping({"/{id}"})
-    public ResponseEntity<Produto> editarProduto(@PathVariable("id") Integer idProduto, @RequestBody Produto produtoAtualizado) {
-        return service.editarProduto(idProduto, produtoAtualizado);
+    public ResponseEntity<Produto> editarProduto(@PathVariable("id") String codigoBarras, @RequestBody Produto produtoAtualizado) {
+        // O Service também precisará ser atualizado
+        return service.editarProduto(codigoBarras, produtoAtualizado);
     }
 
+    // ALTERADO: Recebe String (codigo_barras) em vez de Integer (idProduto)
     @DeleteMapping({"/{id}"})
-    public Optional<Produto> excluirProduto(@PathVariable("id") Integer idProduto) {
-        return service.excluirProduto(idProduto);
+    public Optional<Produto> excluirProduto(@PathVariable("id") String codigoBarras) {
+        // O Service também precisará ser atualizado
+        return service.excluirProduto(codigoBarras);
     }
 }

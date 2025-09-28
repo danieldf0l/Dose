@@ -2,35 +2,37 @@ package br.com.tavernadovale.tavernadovale.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.Id; // Não precisa mais do GeneratedValue/GenerationType
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "produto")
 public class Produto {
-    
+
+    // NOVO: codigo_barras é a nova chave primária e é String
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_produto", nullable = true)
-    protected int id_produto;
-    
+    @Column(name = "codigo_barras", length = 50, nullable = false)
+    protected String codigo_barras;
+
     @Column(name = "nome_produto", length = 45, nullable = true)
     protected String nome_produto;
-    
+
     @Column(name = "valor_produto", nullable = true)
     protected Float valor_produto;
-    
+
+    // O tipo no banco é ENUM, mas no Java String é o mais comum para mapear
     @Column(name = "tipo_produto", length = 45, nullable = true)
     protected String tipo_produto;
 
-    public int getId_produto() {
-        return id_produto;
+
+    // Getters e Setters atualizados para codigo_barras
+    
+    public String getCodigo_barras() {
+        return codigo_barras;
     }
 
-    public void setId_produto(int id_produto) {
-        this.id_produto = id_produto;
+    public void setCodigo_barras(String codigo_barras) {
+        this.codigo_barras = codigo_barras;
     }
 
     public String getNome_produto() {

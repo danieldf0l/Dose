@@ -23,28 +23,37 @@ public class ProdutoService {
         return (List<Produto>) repository.findAll();
     }
 
-    public ResponseEntity<Produto> buscarPorId(int id) {
-        return repository.findById(id)
+    // ALTERADO: ID agora é String (codigo_barras)
+    public ResponseEntity<Produto> buscarPorId(String codigoBarras) {
+        return repository.findById(codigoBarras)
                 .map(produto -> ResponseEntity.ok(produto))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     public Produto criarProduto(Produto produto) {
         try {
+            // O objeto 'produto' recebido deve vir com o 'codigo_barras' preenchido
             Produto produtoNovo = repository.save(produto);
             return produtoNovo;
         } catch (Exception e) {
-            throw new TipoInvalidoException();
+            // Aqui, o TipoInvalidoException pode ser substituído por uma exceção mais específica
+            // se for o caso de violar a chave primária (código de barras repetido)
+            throw new TipoInvalidoException(); 
         }
     }
 
-    public ResponseEntity<Produto> editarProduto(Integer idProduto, Produto produtoAtualizado) {
-        Optional<Produto> produtoExistente = repository.findById(idProduto);
+    // ALTERADO: ID agora é String (codigo_barras)
+    public ResponseEntity<Produto> editarProduto(String codigoBarras, Produto produtoAtualizado) {
+        Optional<Produto> produtoExistente = repository.findById(codigoBarras); // Usa String aqui
+        
         if (produtoExistente.isPresent()) {
             Produto produto = produtoExistente.get();
+            
+            // O codigo_barras não é alterado, apenas os outros campos
             produto.setNome_produto(produtoAtualizado.getNome_produto());
             produto.setTipo_produto(produtoAtualizado.getTipo_produto());
             produto.setValor_produto(produtoAtualizado.getValor_produto());
+            
             Produto produtoSalvo = repository.save(produto);
             return ResponseEntity.ok(produtoSalvo);
         } else {
@@ -52,10 +61,11 @@ public class ProdutoService {
         }
     }
 
-    public Optional<Produto> excluirProduto(Integer idProduto) {
-        Optional<Produto> produto = repository.findById(idProduto);
-        repository.deleteById(idProduto);
+    // ALTERADO: ID agora é String (codigo_barras)
+    public Optional<Produto> excluirProduto(String codigoBarras) {
+        Optional<Produto> produto = repository.findById(codigoBarras);
+        // Exclui usando o codigo_barras (String)
+        repository.deleteById(codigoBarras); 
         return produto;
     }
-
 }

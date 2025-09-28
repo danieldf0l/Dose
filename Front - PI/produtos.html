@@ -8,20 +8,21 @@
     <link rel="stylesheet" href="./styles/produtos.css">
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/media.css">
-    <script src="scripts/script.js" defer></script>
+    <script src="scripts/produtos.js" defer></script>
 </head>
+
 <body>
 
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
-          <div class="vw-plugin-top-wrapper"></div>
+            <div class="vw-plugin-top-wrapper"></div>
         </div>
-      </div>
-      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-      <script>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
-      </script>
+    </script>
 
     <nav>
         <div class="logo">Taverna do Vale</div>
@@ -61,7 +62,7 @@
                 }
             </script>
         </div>
-    </nav>
+    </nav>  
     <main>
         <h2 class="txt_cadstr">Cadastrar</h2>
         <h2 class="txt_prdts">Produtos</h2>
@@ -78,14 +79,17 @@
                 <input type="text" id="valor-produto" name="valor-produto" placeholder="R$ 100,00" required>
             </div>
             <div class="campos_baixo">
-                <label for="codigo-produto">Código</label>
-                <input type="text" id="codigo-produto" name="codigo-produto" placeholder="ID do Produto" required>
+                <label for="codigo-produto">Código de Barras</label>
+                <input type="text" id="codigo-produto" name="codigo-produto" placeholder="Ex: 7891234567890" required>
+                
                 <label for="tipo-produto">Tipo</label>
-                <input type="text" id="tipo-produto" name="tipo-produto" placeholder="Cerveja/Vinho/Energético/Whisky"required>
+                <input type="text" id="tipo-produto" name="tipo-produto" placeholder="Cerveja/Vinho/Energético/Whisky"
+                    required>
                 <button type="button" class="btn_slv_prdts">Salvar</button>
             </div>
         </form>
     </main>
     <footer></footer>
 </body>
+
 </html>
