@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./styles/estoque.css">
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/media.css">
-    <script src="scripts/script.js" defer></script>
+    <script src="scripts/estoque.js" defer></script>
 </head>
 <body>
 
@@ -73,20 +73,20 @@
 
         <form class="campos_estq">
             <div class="campos_cima">
-                <label for="codigo-estoque">Código</label>
-                <input type="text" id="codigo-estoque" name="codigo-estoque" placeholder="ID do Produto" required>
-                <label for="quatidade-estoque">Quantidade</label>
-                <input type="text" id="quatidade-estoque" name="quatidade-estoque" placeholder="Und." required>
-            </div>
-            <div class="campos_baixo">
-                <label for="data-estoque">Data de Validade</label>
-                <input type="date" id="data-estoque" name="data-estoque" placeholder="dd/mm/aaaa" required>
-                <label for="lote-estoque">Lote</label>
-                <input type="text" id="lote-estoque" name="lote-estoque" placeholder="Nº do Lote/Texto" required>
-                <button type="submit" class="btn_slv_estq">Salvar</button>
-            </div>
-        </form>
-    </main>
-    <footer></footer>
+                                <label for="codigo-estoque">Código de Barras do Produto</label>
+                <input type="text" id="codigo-estoque" name="codigo-estoque" placeholder="Ex: JUR123" required>
+                <label for="quatidade-estoque">Quantidade</label>
+                <input type="text" id="quatidade-estoque" name="quatidade-estoque" placeholder="Und." required>
+            </div>
+            <div class="campos_baixo">
+                <label for="data-estoque">Data de Validade</label>
+                <input type="date" id="data-estoque" name="data-estoque" placeholder="dd/mm/aaaa" required>
+                <label for="lote-estoque">Lote</label>
+                <input type="text" id="lote-estoque" name="lote-estoque" placeholder="Nº do Lote/Texto" required>
+                <button type="button" class="btn_slv_estq">Salvar</button>
+            </div>
+        </form>
+    </main>
+    <footer></footer>
 </body>
 </html>
