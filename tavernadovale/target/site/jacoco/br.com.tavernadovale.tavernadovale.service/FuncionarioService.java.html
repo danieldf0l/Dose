@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FuncionarioService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dropofgold</a> &gt; <a href="index.source.html" class="el_package">br.com.tavernadovale.tavernadovale.service</a> &gt; <span class="el_source">FuncionarioService.java</span></div><h1>FuncionarioService.java</h1><pre class="source lang-java linenums">package br.com.tavernadovale.tavernadovale.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import br.com.tavernadovale.tavernadovale.dao.IFuncionario;
+import br.com.tavernadovale.tavernadovale.model.Funcionario;
+
+@Service
+public class FuncionarioService {
+
+    private final IFuncionario repository;
+
+<span class="fc" id="L17">    public FuncionarioService(IFuncionario repository) {</span>
+<span class="fc" id="L18">        this.repository = repository;</span>
+<span class="fc" id="L19">    }</span>
+
+    public List&lt;Funcionario&gt; listarFuncionario() {
+<span class="nc" id="L22">        return (List&lt;Funcionario&gt;) repository.findAll();</span>
+    }
+
+    public ResponseEntity&lt;Funcionario&gt; buscarPorId(int id) {
+<span class="nc" id="L26">        return repository.findById(id)</span>
+<span class="nc" id="L27">                .map(funcionario -&gt; ResponseEntity.ok(funcionario))</span>
+<span class="nc" id="L28">                .orElse(ResponseEntity.notFound().build());</span>
+    }
+
+    public Funcionario criarFuncionario(Funcionario funcionario) {
+<span class="nc" id="L32">        Funcionario funcionarioNovo = repository.save(funcionario);</span>
+<span class="nc" id="L33">        return funcionarioNovo;</span>
+    }
+
+    public ResponseEntity&lt;Funcionario&gt; editarFuncionario(Integer idfuncionario, Funcionario funcionarioAtualizado) {
+<span class="fc" id="L37">        Optional&lt;Funcionario&gt; funcionarioExistente = repository.findById(idfuncionario);</span>
+
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (funcionarioExistente.isPresent()) {</span>
+<span class="nc" id="L40">            Funcionario funcionario = funcionarioExistente.get();</span>
+
+<span class="nc" id="L42">            funcionario.setNome_funcionario(funcionarioAtualizado.getNome_funcionario());</span>
+<span class="nc" id="L43">            funcionario.setCargo_funcionario(funcionarioAtualizado.getCargo_funcionario());</span>
+<span class="nc" id="L44">            funcionario.setHorario_entrada(funcionarioAtualizado.getHorario_entrada());</span>
+<span class="nc" id="L45">            funcionario.setHorario_saida(funcionarioAtualizado.getHorario_saida());</span>
+
+<span class="nc" id="L47">            Funcionario FuncionarioSalvo = repository.save(funcionario);</span>
+<span class="nc" id="L48">            return ResponseEntity.ok(FuncionarioSalvo);</span>
+        } else {
+<span class="fc" id="L50">            return ResponseEntity.notFound().build();</span>
+        }
+    }
+
+    public Optional&lt;Funcionario&gt; exlcuirFuncionario(Integer idFuncionario) {
+<span class="nc" id="L55">        Optional&lt;Funcionario&gt; funcionario = repository.findById(idFuncionario);</span>
+<span class="nc" id="L56">        repository.deleteById(idFuncionario);</span>
+<span class="nc" id="L57">        return funcionario;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

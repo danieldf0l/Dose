@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Venda.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">dropofgold</a> &gt; <a href="index.source.html" class="el_package">br.com.tavernadovale.tavernadovale.model</a> &gt; <span class="el_source">Venda.java</span></div><h1>Venda.java</h1><pre class="source lang-java linenums">package br.com.tavernadovale.tavernadovale.model;
+
+import java.sql.Timestamp;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = &quot;venda&quot;)
+<span class="fc" id="L14">public class Venda {</span>
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = &quot;id_venda&quot;, nullable = true)
+    protected int id_venda;
+    
+    @Column(name = &quot;valor_parcial&quot;, nullable = true)
+    protected double valor_parcial_venda;
+    
+    @Column(name = &quot;valor_final&quot;, nullable = true)
+    protected double valor_final_venda;
+    
+    @Column(name = &quot;forma_pagamento&quot;, length = 45, nullable = true)
+    protected String forma_pagamento_venda;
+    
+    @Column(name = &quot;data_venda&quot;, nullable = true)
+    protected Timestamp data_hora_venda;
+
+    public int getId_venda() {
+<span class="nc" id="L34">        return id_venda;</span>
+    }
+
+    public void setId_venda(int id_venda) {
+<span class="nc" id="L38">        this.id_venda = id_venda;</span>
+<span class="nc" id="L39">    }</span>
+
+    public double getValor_parcial_venda() {
+<span class="nc" id="L42">        return valor_parcial_venda;</span>
+    }
+
+    public void setValor_parcial_venda(double valor) {
+<span class="nc" id="L46">        this.valor_parcial_venda = valor;</span>
+<span class="nc" id="L47">    }</span>
+
+    public double getValor_final_venda() {
+<span class="fc" id="L50">        return valor_final_venda;</span>
+    }
+
+    public void setValor_final_venda(double valor_final) {
+<span class="fc" id="L54">        this.valor_final_venda = valor_final;</span>
+<span class="fc" id="L55">    }</span>
+
+    public String getForma_pagamento_venda() {
+<span class="fc" id="L58">        return forma_pagamento_venda;</span>
+    }
+
+    public void setForma_pagamento_venda(String forma_pagamento_venda) {
+<span class="fc" id="L62">        this.forma_pagamento_venda = forma_pagamento_venda;</span>
+<span class="fc" id="L63">    }</span>
+
+    public Timestamp getData_hora_venda() {
+<span class="fc" id="L66">        return data_hora_venda;</span>
+    }
+
+    public void setData_venda(Timestamp data_hora_venda) {
+<span class="fc" id="L70">        this.data_hora_venda = data_hora_venda;</span>
+<span class="fc" id="L71">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>
