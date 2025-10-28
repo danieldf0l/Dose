@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="br.com.tavernadovale.tavernadovale.service.EstoqueServiceTest" time="0.901" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="br.com.tavernadovale.tavernadovale.service.ProdutoServiceTest" time="0.038" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,17 +58,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="listarEstoque_DeveRetornarListaDeEstoque" classname="br.com.tavernadovale.tavernadovale.service.EstoqueServiceTest" time="0.856">
-    <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\df0l\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.12\byte-buddy-agent-1.14.12.jar)
-WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
-WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
-WARNING: Dynamic loading of agents will be disallowed by default in a future release
-]]></system-err>
-  </testcase>
-  <testcase name="excluirEstoque_DeveExcluirERetornarEstoqueExcluido" classname="br.com.tavernadovale.tavernadovale.service.EstoqueServiceTest" time="0.004"/>
-  <testcase name="editarEstoque_QuandoNaoEncontrado_DeveRetornarNotFound" classname="br.com.tavernadovale.tavernadovale.service.EstoqueServiceTest" time="0.018"/>
-  <testcase name="editarEstoque_QuandoEncontrado_DeveAtualizarERetornarEstoque" classname="br.com.tavernadovale.tavernadovale.service.EstoqueServiceTest" time="0.004"/>
-  <testcase name="criarEstoque_DeveSalvarERetornarNovoEstoque" classname="br.com.tavernadovale.tavernadovale.service.EstoqueServiceTest" time="0.001"/>
-  <testcase name="buscarPorId_QuandoEncontrado_DeveRetornarEstoque" classname="br.com.tavernadovale.tavernadovale.service.EstoqueServiceTest" time="0.001"/>
-  <testcase name="buscarPorId_QuandoNaoEncontrado_DeveRetornarNotFound" classname="br.com.tavernadovale.tavernadovale.service.EstoqueServiceTest" time="0.001"/>
+  <testcase name="buscarPorId_RetornaProdutoQuandoExiste" classname="br.com.tavernadovale.tavernadovale.service.ProdutoServiceTest" time="0.034"/>
+  <testcase name="buscarPorId_RetornaNotFoundQuandoNaoExiste" classname="br.com.tavernadovale.tavernadovale.service.ProdutoServiceTest" time="0.002"/>
 </testsuite>

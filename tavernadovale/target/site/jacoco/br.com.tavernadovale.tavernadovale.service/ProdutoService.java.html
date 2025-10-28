@@ -25,9 +25,9 @@ public class ProdutoService {
 
     // ALTERADO: ID agora é String (codigo_barras)
     public ResponseEntity&lt;Produto&gt; buscarPorId(String codigoBarras) {
-<span class="nc" id="L28">        return repository.findById(codigoBarras)</span>
-<span class="nc" id="L29">                .map(produto -&gt; ResponseEntity.ok(produto))</span>
-<span class="nc" id="L30">                .orElse(ResponseEntity.notFound().build());</span>
+<span class="fc" id="L28">        return repository.findById(codigoBarras)</span>
+<span class="fc" id="L29">                .map(produto -&gt; ResponseEntity.ok(produto))</span>
+<span class="fc" id="L30">                .orElse(ResponseEntity.notFound().build());</span>
     }
 
     public Produto criarProduto(Produto produto) {
