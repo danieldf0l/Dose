@@ -19,42 +19,42 @@ public class FuncionarioService {
 <span class="fc" id="L19">    }</span>
 
     public List&lt;Funcionario&gt; listarFuncionario() {
-<span class="nc" id="L22">        return (List&lt;Funcionario&gt;) repository.findAll();</span>
+<span class="fc" id="L22">        return (List&lt;Funcionario&gt;) repository.findAll();</span>
     }
 
     public ResponseEntity&lt;Funcionario&gt; buscarPorId(int id) {
-<span class="nc" id="L26">        return repository.findById(id)</span>
-<span class="nc" id="L27">                .map(funcionario -&gt; ResponseEntity.ok(funcionario))</span>
-<span class="nc" id="L28">                .orElse(ResponseEntity.notFound().build());</span>
+<span class="fc" id="L26">        return repository.findById(id)</span>
+<span class="fc" id="L27">                .map(funcionario -&gt; ResponseEntity.ok(funcionario))</span>
+<span class="fc" id="L28">                .orElse(ResponseEntity.notFound().build());</span>
     }
 
     public Funcionario criarFuncionario(Funcionario funcionario) {
-<span class="nc" id="L32">        Funcionario funcionarioNovo = repository.save(funcionario);</span>
-<span class="nc" id="L33">        return funcionarioNovo;</span>
+<span class="fc" id="L32">        Funcionario funcionarioNovo = repository.save(funcionario);</span>
+<span class="fc" id="L33">        return funcionarioNovo;</span>
     }
 
     public ResponseEntity&lt;Funcionario&gt; editarFuncionario(Integer idfuncionario, Funcionario funcionarioAtualizado) {
 <span class="fc" id="L37">        Optional&lt;Funcionario&gt; funcionarioExistente = repository.findById(idfuncionario);</span>
 
-<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (funcionarioExistente.isPresent()) {</span>
-<span class="nc" id="L40">            Funcionario funcionario = funcionarioExistente.get();</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (funcionarioExistente.isPresent()) {</span>
+<span class="fc" id="L40">            Funcionario funcionario = funcionarioExistente.get();</span>
 
-<span class="nc" id="L42">            funcionario.setNome_funcionario(funcionarioAtualizado.getNome_funcionario());</span>
-<span class="nc" id="L43">            funcionario.setCargo_funcionario(funcionarioAtualizado.getCargo_funcionario());</span>
-<span class="nc" id="L44">            funcionario.setHorario_entrada(funcionarioAtualizado.getHorario_entrada());</span>
-<span class="nc" id="L45">            funcionario.setHorario_saida(funcionarioAtualizado.getHorario_saida());</span>
+<span class="fc" id="L42">            funcionario.setNome_funcionario(funcionarioAtualizado.getNome_funcionario());</span>
+<span class="fc" id="L43">            funcionario.setCargo_funcionario(funcionarioAtualizado.getCargo_funcionario());</span>
+<span class="fc" id="L44">            funcionario.setHorario_entrada(funcionarioAtualizado.getHorario_entrada());</span>
+<span class="fc" id="L45">            funcionario.setHorario_saida(funcionarioAtualizado.getHorario_saida());</span>
 
-<span class="nc" id="L47">            Funcionario FuncionarioSalvo = repository.save(funcionario);</span>
-<span class="nc" id="L48">            return ResponseEntity.ok(FuncionarioSalvo);</span>
+<span class="fc" id="L47">            Funcionario FuncionarioSalvo = repository.save(funcionario);</span>
+<span class="fc" id="L48">            return ResponseEntity.ok(FuncionarioSalvo);</span>
         } else {
 <span class="fc" id="L50">            return ResponseEntity.notFound().build();</span>
         }
     }
 
     public Optional&lt;Funcionario&gt; exlcuirFuncionario(Integer idFuncionario) {
-<span class="nc" id="L55">        Optional&lt;Funcionario&gt; funcionario = repository.findById(idFuncionario);</span>
-<span class="nc" id="L56">        repository.deleteById(idFuncionario);</span>
-<span class="nc" id="L57">        return funcionario;</span>
+<span class="fc" id="L55">        Optional&lt;Funcionario&gt; funcionario = repository.findById(idFuncionario);</span>
+<span class="fc" id="L56">        repository.deleteById(idFuncionario);</span>
+<span class="fc" id="L57">        return funcionario;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>
