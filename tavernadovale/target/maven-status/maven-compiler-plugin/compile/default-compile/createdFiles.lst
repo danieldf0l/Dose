@@ -14,8 +14,6 @@ br\com\tavernadovale\tavernadovale\controller\ProdutoController.class
 br\com\tavernadovale\tavernadovale\tavernadovaleApplication.class
 br\com\tavernadovale\tavernadovale\service\ProdutoService.class
 br\com\tavernadovale\tavernadovale\controller\EstoqueController.class
-br\com\tavernadovale\tavernadovale\exceptions\GlobalExceptionHandler.class
 br\com\tavernadovale\tavernadovale\model\Estoque.class
 br\com\tavernadovale\tavernadovale\model\Produto.class
 br\com\tavernadovale\tavernadovale\model\ProdutosVenda.class
-br\com\tavernadovale\tavernadovale\exceptions\TipoInvalidoException.class

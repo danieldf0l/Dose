@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,8 +28,6 @@ import org.springframework.http.ResponseEntity;
 
 import br.com.tavernadovale.tavernadovale.dao.IProduto;
 import br.com.tavernadovale.tavernadovale.model.Produto;
-
-
 
 @ExtendWith(MockitoExtension.class)
 class ProdutoServiceTest {
@@ -82,7 +81,6 @@ class ProdutoServiceTest {
         verify(repository).save(produtoParaSalvar); // Verifica se o save foi chamado
     }
 
-    
     @Test
     void criarProduto_ComPrecoNulo_DeveRetornarProduto() {
         Produto produtoPrecoNulo = new Produto();
@@ -98,7 +96,25 @@ class ProdutoServiceTest {
         assertNotNull(produtoSalvo);
         assertNull(produtoSalvo.getValor_produto(), "O valor do produto deve ser nulo.");
         assertEquals("78910002", produtoSalvo.getCodigo_barras());
-        verify(repository).save(produtoPrecoNulo); 
+        verify(repository).save(produtoPrecoNulo);
+    }
+
+    @Test
+    void criarProduto_QuandoRepositorioLancaExcecao_DeveRethrowExcecao() {
+        Produto produtoComErro = new Produto();
+        produtoComErro.setCodigo_barras("123");
+
+        RuntimeException excecaoSimulada = new RuntimeException("Erro de banco de dados");
+
+        when(repository.save(produtoComErro)).thenThrow(excecaoSimulada);
+
+        RuntimeException exceptionLancada = assertThrows(RuntimeException.class, () -> {
+            service.criarProduto(produtoComErro);
+        }, "O serviço deveria ter relançado a RuntimeException");
+
+        assertSame(excecaoSimulada, exceptionLancada, "A exceção relançada deve ser a mesma do repositório.");
+
+        verify(repository).save(produtoComErro);
     }
 
     @Test
@@ -130,8 +146,6 @@ class ProdutoServiceTest {
         verify(repository).findAll();
     }
 
-    // 2. Testes para editarProduto()
-
     @Test
     void editarProduto_QuandoProdutoExiste_DeveRetornarOk() {
         String codigoBarras = "789_EXISTE";
@@ -146,18 +160,17 @@ class ProdutoServiceTest {
         produtoAtualizado.setTipo_produto("Tipo Novo");
 
         when(repository.findById(codigoBarras)).thenReturn(Optional.of(produtoExistente));
-        
+
         ArgumentCaptor<Produto> produtoCaptor = ArgumentCaptor.forClass(Produto.class);
         when(repository.save(produtoCaptor.capture())).thenAnswer(i -> i.getArgument(0));
 
-        // Act
         ResponseEntity<Produto> response = service.editarProduto(codigoBarras, produtoAtualizado);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
-        
+
         Produto produtoSalvo = response.getBody();
-        assertEquals(codigoBarras, produtoSalvo.getCodigo_barras()); // ID não deve mudar
+        assertEquals(codigoBarras, produtoSalvo.getCodigo_barras());
         assertEquals("Nome Novo", produtoSalvo.getNome_produto());
         assertEquals(15.0f, produtoSalvo.getValor_produto());
         assertEquals("Tipo Novo", produtoSalvo.getTipo_produto());
@@ -180,10 +193,8 @@ class ProdutoServiceTest {
         assertNull(response.getBody());
 
         verify(repository).findById(codigoBarras);
-        verify(repository, never()).save(any(Produto.class)); // Verifica se o 'save' NUNCA foi chamado
+        verify(repository, never()).save(any(Produto.class));
     }
-
-    // 3. Testes para excluirProduto()
 
     @Test
     void excluirProduto_QuandoProdutoExiste_DeveRetornarOptionalComProduto() {
@@ -192,7 +203,7 @@ class ProdutoServiceTest {
         produtoParaExcluir.setCodigo_barras(codigoBarras);
 
         when(repository.findById(codigoBarras)).thenReturn(Optional.of(produtoParaExcluir));
-        doNothing().when(repository).deleteById(codigoBarras); 
+        doNothing().when(repository).deleteById(codigoBarras);
 
         Optional<Produto> resultado = service.excluirProduto(codigoBarras);
 
@@ -200,7 +211,7 @@ class ProdutoServiceTest {
         assertSame(produtoParaExcluir, resultado.get());
 
         verify(repository).findById(codigoBarras);
-        verify(repository).deleteById(codigoBarras); // Verifica se a exclusão foi chamada
+        verify(repository).deleteById(codigoBarras);
     }
 
     @Test
@@ -208,14 +219,14 @@ class ProdutoServiceTest {
         String codigoBarras = "444_NAO_EXISTE";
 
         when(repository.findById(codigoBarras)).thenReturn(Optional.empty());
-        doNothing().when(repository).deleteById(codigoBarras); 
+        doNothing().when(repository).deleteById(codigoBarras);
 
         Optional<Produto> resultado = service.excluirProduto(codigoBarras);
 
         assertFalse(resultado.isPresent(), "O Optional retornado deve estar vazio.");
 
         verify(repository).findById(codigoBarras);
-        verify(repository).deleteById(codigoBarras); // O serviço chama deleteById mesmo se não encontrar
+        verify(repository).deleteById(codigoBarras);
     }
 
 }

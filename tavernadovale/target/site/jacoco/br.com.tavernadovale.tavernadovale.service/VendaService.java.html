@@ -36,7 +36,7 @@ public class VendaService {
     public ResponseEntity&lt;Venda&gt; editarVenda(Integer idVenda, Venda vendaAtualizada) {
 <span class="fc" id="L37">        Optional&lt;Venda&gt; vendaExistente = repository.findById(idVenda);</span>
 
-<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (vendaExistente.isPresent()) {</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (vendaExistente.isPresent()) {</span>
 <span class="fc" id="L40">            Venda venda = vendaExistente.get();</span>
 
 <span class="fc" id="L42">            venda.setData_venda(vendaAtualizada.getData_hora_venda());</span>
@@ -46,7 +46,7 @@ public class VendaService {
 <span class="fc" id="L46">            Venda produtoSalvo = repository.save(venda);</span>
 <span class="fc" id="L47">            return ResponseEntity.ok(produtoSalvo);</span>
         } else {
-<span class="nc" id="L49">            return ResponseEntity.notFound().build();</span>
+<span class="fc" id="L49">            return ResponseEntity.notFound().build();</span>
         }
     }
 

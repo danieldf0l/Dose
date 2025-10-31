@@ -40,7 +40,6 @@ class FuncionarioServiceTest {
     @InjectMocks
     private FuncionarioService service;
 
-
     @Test
     void editarFuncionario_whenNotFound_shouldReturnNotFound() {
         Integer id = 2;
@@ -183,10 +182,10 @@ class FuncionarioServiceTest {
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
-        
+
         Funcionario salvo = response.getBody();
-        assertEquals(id, salvo.getId_funcionario()); 
-        assertEquals("Nome Novo", salvo.getNome_funcionario()); 
+        assertEquals(id, salvo.getId_funcionario());
+        assertEquals("Nome Novo", salvo.getNome_funcionario());
         assertEquals("Cargo Novo", salvo.getCargo_funcionario());
         assertEquals(entrada, salvo.getHorario_entrada());
         assertEquals(saida, salvo.getHorario_saida());
@@ -202,7 +201,7 @@ class FuncionarioServiceTest {
         funcionarioMock.setId_funcionario(id);
 
         when(repository.findById(id)).thenReturn(Optional.of(funcionarioMock));
-        doNothing().when(repository).deleteById(id); // Configura mock para método void
+        doNothing().when(repository).deleteById(id);
 
         Optional<Funcionario> resultado = service.exlcuirFuncionario(id);
 
@@ -216,13 +215,13 @@ class FuncionarioServiceTest {
     void excluirFuncionario_QuandoFuncionarioNaoExiste_DeveRetornarOptionalVazio() {
         Integer id = 99;
         when(repository.findById(id)).thenReturn(Optional.empty());
-        doNothing().when(repository).deleteById(id); // Configura mock para método void
+        doNothing().when(repository).deleteById(id);
 
         Optional<Funcionario> resultado = service.exlcuirFuncionario(id);
 
         assertFalse(resultado.isPresent());
         verify(repository).findById(id);
-        verify(repository).deleteById(id); // O serviço chama deleteById mesmo se não encontrar
+        verify(repository).deleteById(id);
     }
 
 }

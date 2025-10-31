@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.tavernadovale.tavernadovale.dao.IProduto;
-import br.com.tavernadovale.tavernadovale.exceptions.TipoInvalidoException;
 import br.com.tavernadovale.tavernadovale.model.Produto;
 
 @Service
@@ -38,22 +37,22 @@ public class ProdutoService {
         } catch (Exception e) {
             // Aqui, o TipoInvalidoException pode ser substituído por uma exceção mais específica
             // se for o caso de violar a chave primária (código de barras repetido)
-            throw new TipoInvalidoException(); 
+            throw e;
         }
     }
 
     // ALTERADO: ID agora é String (codigo_barras)
     public ResponseEntity<Produto> editarProduto(String codigoBarras, Produto produtoAtualizado) {
         Optional<Produto> produtoExistente = repository.findById(codigoBarras); // Usa String aqui
-        
+
         if (produtoExistente.isPresent()) {
             Produto produto = produtoExistente.get();
-            
+
             // O codigo_barras não é alterado, apenas os outros campos
             produto.setNome_produto(produtoAtualizado.getNome_produto());
             produto.setTipo_produto(produtoAtualizado.getTipo_produto());
             produto.setValor_produto(produtoAtualizado.getValor_produto());
-            
+
             Produto produtoSalvo = repository.save(produto);
             return ResponseEntity.ok(produtoSalvo);
         } else {
@@ -65,7 +64,7 @@ public class ProdutoService {
     public Optional<Produto> excluirProduto(String codigoBarras) {
         Optional<Produto> produto = repository.findById(codigoBarras);
         // Exclui usando o codigo_barras (String)
-        repository.deleteById(codigoBarras); 
+        repository.deleteById(codigoBarras);
         return produto;
     }
 }

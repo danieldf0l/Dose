@@ -1,9 +1,7 @@
 C:\Users\df0l\Documents\GitHub\Dose\tavernadovale\src\main\java\br\com\tavernadovale\tavernadovale\controller\FuncionarioController.java
 C:\Users\df0l\Documents\GitHub\Dose\tavernadovale\src\main\java\br\com\tavernadovale\tavernadovale\service\FuncionarioService.java
 C:\Users\df0l\Documents\GitHub\Dose\tavernadovale\src\main\java\br\com\tavernadovale\tavernadovale\service\EstoqueService.java
-C:\Users\df0l\Documents\GitHub\Dose\tavernadovale\src\main\java\br\com\tavernadovale\tavernadovale\exceptions\TipoInvalidoException.java
 C:\Users\df0l\Documents\GitHub\Dose\tavernadovale\src\main\java\br\com\tavernadovale\tavernadovale\controller\VendaController.java
-C:\Users\df0l\Documents\GitHub\Dose\tavernadovale\src\main\java\br\com\tavernadovale\tavernadovale\exceptions\GlobalExceptionHandler.java
 C:\Users\df0l\Documents\GitHub\Dose\tavernadovale\src\main\java\br\com\tavernadovale\tavernadovale\dao\IProdutosVenda.java
 C:\Users\df0l\Documents\GitHub\Dose\tavernadovale\src\main\java\br\com\tavernadovale\tavernadovale\dao\IEstoque.java
 C:\Users\df0l\Documents\GitHub\Dose\tavernadovale\src\main\java\br\com\tavernadovale\tavernadovale\model\Estoque.java

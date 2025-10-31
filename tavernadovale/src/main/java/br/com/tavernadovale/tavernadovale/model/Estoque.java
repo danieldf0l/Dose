@@ -77,4 +77,5 @@ public class Estoque {
     public void setNumero_lote(String numero_lote) {
         this.numero_lote = numero_lote;
     }
+
 }

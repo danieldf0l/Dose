@@ -28,28 +28,28 @@ import br.com.tavernadovale.tavernadovale.service.EstoqueService;
 
     @GetMapping()
     public List&lt;Estoque&gt; listarEstoque() {
-<span class="nc" id="L31">        return service.listarEstoque();</span>
+<span class="fc" id="L31">        return service.listarEstoque();</span>
     }
 
     @GetMapping(&quot;/{id}&quot;)
     public ResponseEntity&lt;Estoque&gt; buscarPorId(@PathVariable int id) {
-<span class="nc" id="L36">        return service.buscarPorId(id);</span>
+<span class="fc" id="L36">        return service.buscarPorId(id);</span>
     }
 
     @PostMapping
     public Estoque criarEstoque(@RequestBody Estoque estoque) {
-<span class="nc" id="L41">        return service.criarEstoque(estoque);</span>
+<span class="fc" id="L41">        return service.criarEstoque(estoque);</span>
     }
 
     @PutMapping(&quot;/{id}&quot;)
     public ResponseEntity&lt;Estoque&gt; editarEstoque(@PathVariable(&quot;id&quot;) Integer idEstoque, @RequestBody Estoque estoqueAtualizado) {
-<span class="nc" id="L46">        return service.editarEstoque(idEstoque,estoqueAtualizado);</span>
+<span class="fc" id="L46">        return service.editarEstoque(idEstoque,estoqueAtualizado);</span>
 
     }
 
     @DeleteMapping(&quot;/{id}&quot;)
     public Optional&lt;Estoque&gt; exlcuirEstoque(@PathVariable(&quot;id&quot;) Integer idEstoque) {
-<span class="nc" id="L52">        return service.exlcuirEstoque(idEstoque);</span>
+<span class="fc" id="L52">        return service.exlcuirEstoque(idEstoque);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>
