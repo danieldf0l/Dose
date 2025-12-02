@@ -23,6 +23,18 @@ public class EstoqueService {
         return (List<Estoque>) repository.findAll();
     }
 
+    /**
+     * NOVO MÉTODO: Busca lotes disponíveis de um produto específico.
+     * Necessário para o frontend popular o campo 'Lote'.
+     * Requer a declaração do método findBy no IEstoque.java (DAO).
+     * @param codigoBarras O código de barras do produto.
+     * @return Lista de registros de estoque (lotes) com quantidade > 0.
+     */
+    public List<Estoque> buscarLotesDisponiveisPorProduto(String codigoBarras) {
+        // Assume que IEstoque possui o método findByProdutoCodigoBarrasAndQuantidadeLoteGreaterThan
+        return repository.findByProdutoCodigoBarrasAndQuantidadeLoteGreaterThan(codigoBarras, 0);
+    }
+
     public ResponseEntity<Estoque> buscarPorId(int id) {
         return repository.findById(id)
                 .map(estoque -> ResponseEntity.ok(estoque))
@@ -40,14 +52,8 @@ public class EstoqueService {
 
         if (estoqueExistente.isPresent()) {
             Estoque estoque = estoqueExistente.get();
-
-            // CORREÇÃO: Removida a linha que tentava setar o ID do Estoque
-            // estoque.setId_produto_estoque(estoqueAtualizado.getId_produto_estoque()); 
             
-            // CORREÇÃO: Atualizar o relacionamento com Produto
-            // setFk_id_produto() não existe mais, agora você usa setProduto()
             estoque.setProduto(estoqueAtualizado.getProduto()); 
-            
             estoque.setQuantidade_lote(estoqueAtualizado.getQuantidade_lote());
             estoque.setData_validade(estoqueAtualizado.getData_validade());
             estoque.setNumero_lote(estoqueAtualizado.getNumero_lote());
@@ -64,5 +70,4 @@ public class EstoqueService {
         repository.deleteById(idEstoque);
         return estoque;
     }
-
 }

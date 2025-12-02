@@ -25,14 +25,20 @@ public class ProdutosVenda {
     
     // Mapeamento para o Produto (fk_codigo_barras)
     @ManyToOne
-    @JoinColumn(name = "fk_codigo_barras", nullable = false) // Coluna do banco agora é fk_codigo_barras
+    @JoinColumn(name = "fk_codigo_barras", nullable = false)
     protected Produto produto;
     
     @Column(name = "quantidade_venda", nullable = false)
     protected int quantidade_venda;
+
+    // NOVO CAMPO ADICIONADO: Mapeamento para o Lote (fk_id_registro_estoque)
+    // Isso liga o item vendido ao registro específico de estoque que será baixado.
+    @ManyToOne
+    @JoinColumn(name = "fk_id_registro_estoque", nullable = false)
+    protected Estoque estoque;
     
 
-    // Getters e Setters
+    // --- Getters e Setters ---
 
     public int getId_produto_venda() {
         return id_produto_venda;
@@ -64,5 +70,14 @@ public class ProdutosVenda {
 
     public void setQuantidade_venda(int quantidade_venda) {
         this.quantidade_venda = quantidade_venda;
+    }
+    
+    // Getter e Setter para Estoque (Lote)
+    public Estoque getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Estoque estoque) {
+        this.estoque = estoque;
     }
 }

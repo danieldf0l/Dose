@@ -20,7 +20,7 @@ import br.com.tavernadovale.tavernadovale.service.EstoqueService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/estoque")
+@RequestMapping("/api/estoque") // Alterado para /api/estoque para seguir convenção REST e JS
 public class EstoqueController {
 
     @Autowired
@@ -29,6 +29,21 @@ public class EstoqueController {
     @GetMapping()
     public List<Estoque> listarEstoque() {
         return service.listarEstoque();
+    }
+
+    /**
+     * NOVO ENDPOINT: Usado pelo frontend de Vendas para buscar lotes disponíveis de um produto.
+     * Corresponde ao fetch no JavaScript: /api/estoque/produto/{codigoBarras}
+     * @param codigoBarras O código de barras do produto.
+     * @return Lista de lotes disponíveis (> 0).
+     */
+    @GetMapping("/produto/{codigoBarras}")
+    public ResponseEntity<List<Estoque>> buscarLotesPorProduto(@PathVariable String codigoBarras) {
+        List<Estoque> lotes = service.buscarLotesDisponiveisPorProduto(codigoBarras);
+        if (lotes.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(lotes);
     }
 
     @GetMapping("/{id}")
@@ -44,7 +59,6 @@ public class EstoqueController {
     @PutMapping("/{id}")
     public ResponseEntity<Estoque> editarEstoque(@PathVariable("id") Integer idEstoque, @RequestBody Estoque estoqueAtualizado) {
         return service.editarEstoque(idEstoque,estoqueAtualizado);
-
     }
 
     @DeleteMapping("/{id}")
