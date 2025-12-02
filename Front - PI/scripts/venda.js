@@ -1,3 +1,5 @@
+const API_URL = "http://localhost:8080/produto"; // endpoint do backend
+
 document.addEventListener('DOMContentLoaded', () => {
     const formVenda = document.getElementById('form-venda');
     const btnAdicionarItem = document.getElementById('btn-adicionar-item');
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function carregarProdutos() {
         try {
             // Ajuste a URL para o seu endpoint de listar produtos
-            const response = await fetch('/api/produtos'); 
+            const response = await fetch('/produto'); 
             if (!response.ok) throw new Error('Falha ao carregar produtos.');
             const produtos = await response.json();
             
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Ajuste a URL para o seu endpoint de listar estoque por produto
-            const response = await fetch(`/api/estoque/produto/${codigoBarras}`); 
+            const response = await fetch(`/estoque/produto/${codigoBarras}`); 
             if (!response.ok) throw new Error('Falha ao carregar lotes.');
             const lotes = await response.json();
 
@@ -184,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // 3. Envia o objeto para o Controller/Service
-            const response = await fetch('/api/vendas', { // Ajuste a URL para seu VendaController
+            const response = await fetch('/vendas', { // Ajuste a URL para seu VendaController
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

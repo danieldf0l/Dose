@@ -20,7 +20,7 @@ import br.com.tavernadovale.tavernadovale.service.EstoqueService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/estoque") // Alterado para /api/estoque para seguir convenção REST e JS
+@RequestMapping("/estoque") // Alterado para /api/estoque para seguir convenção REST e JS
 public class EstoqueController {
 
     @Autowired

@@ -21,8 +21,8 @@ import br.com.tavernadovale.tavernadovale.service.VendaService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/vendas") // Alterado para /api/vendas para corresponder ao JS
-public class VendaController {
+@RequestMapping("/vendas") // Alterado para /api/vendas para corresponder ao JS
+public class VendaController {  
 
     @Autowired
     private VendaService service;
