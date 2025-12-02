@@ -30,10 +30,10 @@ public class EstoqueService {
      * @param codigoBarras O código de barras do produto.
      * @return Lista de registros de estoque (lotes) com quantidade > 0.
      */
-    public List<Estoque> buscarLotesDisponiveisPorProduto(String codigoBarras) {
-        // Assume que IEstoque possui o método findByProdutoCodigoBarrasAndQuantidadeLoteGreaterThan
-        return repository.findByProdutoCodigoBarrasAndQuantidadeLoteGreaterThan(codigoBarras, 0);
-    }
+public List<Estoque> buscarLotesDisponiveisPorProduto(String codigoBarras) {
+    // Use o novo nome do método que definimos com @Query
+    return repository.buscarLotesDisponiveisPorProduto(codigoBarras, 0);
+}
 
     public ResponseEntity<Estoque> buscarPorId(int id) {
         return repository.findById(id)

@@ -20,6 +20,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import br.com.tavernadovale.tavernadovale.dao.IEstoque;
 import br.com.tavernadovale.tavernadovale.dao.IVenda;
 import br.com.tavernadovale.tavernadovale.model.Venda;
 
@@ -27,13 +28,20 @@ class VendaServiceTest {
 
     @Mock
     private IVenda repository;
+    
+    @Mock
+    private IEstoque estoqueRepository;
 
     private VendaService vendaService;
 
     @BeforeEach
-    void setUp() {
+    void setUp() {  
         MockitoAnnotations.openMocks(this);
-        vendaService = new VendaService(repository);
+        vendaService = new VendaService(repository, estoqueRepository);
+        
+        // Configura comportamento padrão para o estoqueRepository
+        when(estoqueRepository.decrementarEstoque(any(Integer.class), any(Integer.class)))
+            .thenReturn(1);
     }
 
     @Test
@@ -70,9 +78,7 @@ class VendaServiceTest {
 
     @Test
     void criarVenda_DeveSalvarESRetornarVenda() {
-
         Venda vendaParaSalvar = new Venda();
-
         vendaParaSalvar.setValor_parcial_venda(75.50);
         vendaParaSalvar.setForma_pagamento_venda("Pix");
 
@@ -111,7 +117,6 @@ class VendaServiceTest {
 
     @Test
     void editarVenda_QuandoVendaNaoExiste_DeveRetornarNotFound() {
-
         Integer idVendaNaoExistente = 99;
         Venda vendaAtualizadaMock = new Venda();
         vendaAtualizadaMock.setValor_final_venda(150.0);

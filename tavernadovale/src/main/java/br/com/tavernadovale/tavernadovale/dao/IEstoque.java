@@ -14,12 +14,14 @@ public interface IEstoque extends CrudRepository<Estoque, Integer> {
     /**
      * NOVO MÉTODO: Query Method para buscar todos os registros de estoque (lotes)
      * de um produto específico que ainda possuem quantidade disponível (> 0).
-     * O Spring Data JPA cria a query automaticamente por convenção do nome.
      * @param codigoBarras Código de barras do produto.
      * @param quantidade Zero, para buscar quantidades maiores que zero.
      * @return Lista de objetos Estoque (lotes disponíveis).
      */
-    List<Estoque> findByProdutoCodigoBarrasAndQuantidadeLoteGreaterThan(String codigoBarras, int quantidade);
+    @Query("SELECT e FROM Estoque e WHERE e.produto.codigo_barras = :codigoBarras AND e.quantidade_lote > :quantidade")
+    List<Estoque> buscarLotesDisponiveisPorProduto(
+            @Param("codigoBarras") String codigoBarras,
+            @Param("quantidade") int quantidade);
 
     /**
      * Decrementa a quantidade do lote específico vendido no estoque.
