@@ -1,98 +1,125 @@
 package br.com.tavernadovale.tavernadovale.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional; // 1. NOVO IMPORT: Para garantir atomicidade (tudo ou nada)
+import org.springframework.transaction.annotation.Transactional;
 
-import br.com.tavernadovale.tavernadovale.dao.IEstoque;       // 2. NOVO IMPORT: Para acessar o DAO de Estoque
+import br.com.tavernadovale.tavernadovale.dao.IEstoque;
+import br.com.tavernadovale.tavernadovale.dao.IProduto;
 import br.com.tavernadovale.tavernadovale.dao.IVenda;
+import br.com.tavernadovale.tavernadovale.model.Estoque;
+import br.com.tavernadovale.tavernadovale.model.Produto;
+import br.com.tavernadovale.tavernadovale.model.ProdutosVenda;
 import br.com.tavernadovale.tavernadovale.model.Venda;
-import br.com.tavernadovale.tavernadovale.model.ProdutosVenda; // 3. NOVO IMPORT: Para acessar os itens da venda
 
 @Service
 public class VendaService {
 
-    private final IVenda repository; // IVenda
-    private final IEstoque estoqueRepository; // 4. NOVO ATRIBUTO: DAO de Estoque
+    @Autowired
+    private IVenda repository;
 
-    // 5. CONSTRUTOR ATUALIZADO: Injetando IVenda e IEstoque
-    public VendaService(IVenda vendaRepository, IEstoque estoqueRepository) {
-        this.repository = vendaRepository;
-        this.estoqueRepository = estoqueRepository;
-    }
+    @Autowired
+    private IProduto produtoRepository;
+
+    @Autowired
+    private IEstoque estoqueRepository;
+
+    // ---------------------------------------------------------
+    // MÉTODOS QUE O CONTROLLER ESTÁ EXIGINDO
+    // ---------------------------------------------------------
 
     public List<Venda> listarVenda() {
         return (List<Venda>) repository.findAll();
     }
 
     public ResponseEntity<Venda> buscarPorId(int id) {
-        return repository.findById(id)
-                .map(venda -> ResponseEntity.ok(venda))
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-    /**
-     * 6. MÉTODO criarVenda REESCRITO: Salva a Venda, seus itens e dá baixa no Estoque de forma transacional.
-     * @param venda O objeto Venda contendo a lista de ProdutosVenda.
-     * @return A Venda salva.
-     */
-    @Transactional // ESSENCIAL: Garante que a baixa de estoque e o registro da venda sejam uma operação única.
-    public Venda criarVenda(Venda venda) {
-        
-        // 6.1. Salva a Venda principal e seus itens (os itens são salvos via Cascade configurado em Venda.java)
-        Venda vendaSalva = repository.save(venda);
-        
-        // 6.2. Pega a lista de itens para dar baixa no estoque
-        List<ProdutosVenda> itensVendidos = vendaSalva.getProdutosVenda(); 
-
-        if (itensVendidos != null) {
-            for (ProdutosVenda item : itensVendidos) {
-                
-                // 6.3. Obtém o ID do Lote (Estoque) e a quantidade vendida
-                // O objeto Estoque deve ter sido populado pelo Controller/Frontend
-                int idLote = item.getEstoque().getId_registro_estoque();
-                int quantidade = item.getQuantidade_venda();
-                
-                // 6.4. Chama a DAO de Estoque para decrementar a quantidade do lote específico
-                int linhasAfetadas = estoqueRepository.decrementarEstoque(idLote, quantidade);
-                
-                // 6.5. Verifica se a baixa foi bem-sucedida. Se não, lança exceção para reverter TUDO (rollback)
-                if (linhasAfetadas == 0) {
-                    throw new RuntimeException("Falha ao dar baixa no estoque para o Lote ID: " + idLote + ". Estoque insuficiente, lote não encontrado ou tentativa de vender mais do que o disponível.");
-                }
-            }
-        }
-        
-        return vendaSalva;
+        Optional<Venda> venda = repository.findById(id);
+        return venda.map(ResponseEntity::ok)
+                    .orElse(ResponseEntity.notFound().build());
     }
 
     public ResponseEntity<Venda> editarVenda(Integer idVenda, Venda vendaAtualizada) {
         Optional<Venda> vendaExistente = repository.findById(idVenda);
 
-        if (vendaExistente.isPresent()) {
-            Venda venda = vendaExistente.get();
-
-            // Nota: Você deve reajustar estes setters conforme os nomes de métodos em sua classe Venda.java
-            // Exemplo: venda.setData_venda(vendaAtualizada.getData_hora_venda());
-            // Se os nomes dos métodos não estão corretos, ajuste-os ou use os nomes exatos.
-            // Para manter a compatibilidade com seu código original:
-            // venda.setData_venda(vendaAtualizada.getData_hora_venda());
-            // venda.setForma_pagamento_venda(vendaAtualizada.getForma_pagamento_venda());
-            // venda.setValor_final_venda(vendaAtualizada.getValor_final_venda());
-            
-            Venda produtoSalvo = repository.save(venda);
-            return ResponseEntity.ok(produtoSalvo);
-        } else {
+        if (!vendaExistente.isPresent()) {
             return ResponseEntity.notFound().build();
         }
+
+        Venda venda = vendaExistente.get();
+        venda.setNome_cliente(vendaAtualizada.getNome_cliente());
+        venda.setCpf_cliente(vendaAtualizada.getCpf_cliente());
+        venda.setValor_total_venda(vendaAtualizada.getValor_total_venda());
+        venda.setPago(vendaAtualizada.isPago());
+
+        // Você pode decidir se permite editar produtos_venda
+
+        Venda vendaEditada = repository.save(venda);
+
+        return ResponseEntity.ok(vendaEditada);
     }
 
     public Optional<Venda> exlcuirVenda(Integer idVenda) {
         Optional<Venda> venda = repository.findById(idVenda);
-        repository.deleteById(idVenda);
+        venda.ifPresent(repository::delete);
         return venda;
+    }
+
+    // ---------------------------------------------------------
+    // MÉTODO PRINCIPAL: CRIAR VENDA
+    // ---------------------------------------------------------
+
+    @Transactional
+    public Venda criarVenda(Venda venda) {
+
+        if (venda.getDataHoraVenda() == null) {
+            venda.setDataHoraVenda(LocalDateTime.now());
+        }
+
+        for (ProdutosVenda item : venda.getProdutosVenda()) {
+
+            String codigo = item.getProduto().getCodigo_barras();
+            Produto produtoBanco = produtoRepository.findById(codigo)
+                    .orElseThrow(() -> new RuntimeException("Produto não encontrado: " + codigo));
+
+            item.setProduto(produtoBanco);
+
+            int idLote = item.getEstoque().getId_registro_estoque();
+
+            Estoque loteBanco = estoqueRepository.findById(idLote)
+                    .orElseThrow(() -> new RuntimeException("Lote não encontrado: " + idLote));
+
+            if (loteBanco.getQuantidade_lote() < item.getQuantidade_venda()) {
+                throw new RuntimeException(
+                    "Estoque insuficiente no lote " + idLote +
+                    " (disponível: " + loteBanco.getQuantidade_lote() +
+                    ", vendido: " + item.getQuantidade_venda() + ")"
+                );
+            }
+
+            item.setEstoque(loteBanco);
+            item.setVenda(venda);
+        }
+
+        Venda vendaSalva = repository.save(venda);
+
+        for (ProdutosVenda item : vendaSalva.getProdutosVenda()) {
+
+            int linhasAfetadas = estoqueRepository.decrementarEstoque(
+                    item.getEstoque().getId_registro_estoque(),
+                    item.getQuantidade_venda()
+            );
+
+            if (linhasAfetadas == 0) {
+                throw new RuntimeException("Erro ao atualizar estoque do lote: " +
+                        item.getEstoque().getId_registro_estoque());
+            }
+        }
+
+        return vendaSalva;
     }
 }

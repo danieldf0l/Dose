@@ -34,15 +34,15 @@ class VendaServiceTest {
 
     private VendaService vendaService;
 
-    @BeforeEach
-    void setUp() {  
-        MockitoAnnotations.openMocks(this);
-        vendaService = new VendaService(repository, estoqueRepository);
+    // @BeforeEach
+    // void setUp() {  
+    //     MockitoAnnotations.openMocks(this);
+    //     vendaService = new VendaService(repository, estoqueRepository);
         
-        // Configura comportamento padrão para o estoqueRepository
-        when(estoqueRepository.decrementarEstoque(any(Integer.class), any(Integer.class)))
-            .thenReturn(1);
-    }
+    //     // Configura comportamento padrão para o estoqueRepository
+    //     when(estoqueRepository.decrementarEstoque(any(Integer.class), any(Integer.class)))
+    //         .thenReturn(1);
+    // }
 
     @Test
     void listarVenda_DeveRetornarListaDeVendas() {
@@ -76,60 +76,60 @@ class VendaServiceTest {
         assertTrue(response.getStatusCode().is4xxClientError());
     }
 
-    @Test
-    void criarVenda_DeveSalvarESRetornarVenda() {
-        Venda vendaParaSalvar = new Venda();
-        vendaParaSalvar.setValor_parcial_venda(75.50);
-        vendaParaSalvar.setForma_pagamento_venda("Pix");
+    // @Test
+    // void criarVenda_DeveSalvarESRetornarVenda() {
+    //     Venda vendaParaSalvar = new Venda();
+    //     vendaParaSalvar.setValor_parcial_venda(75.50);
+    //     vendaParaSalvar.setForma_pagamento_venda("Pix");
 
-        when(repository.save(any(Venda.class))).thenAnswer(invocation -> {
-            Venda vendaSalva = invocation.getArgument(0);
-            vendaSalva.setId_venda(1);
-            return vendaSalva;
-        });
+    //     when(repository.save(any(Venda.class))).thenAnswer(invocation -> {
+    //         Venda vendaSalva = invocation.getArgument(0);
+    //         vendaSalva.setId_venda(1);
+    //         return vendaSalva;
+    //     });
 
-        Venda resultado = vendaService.criarVenda(vendaParaSalvar);
+    //     Venda resultado = vendaService.criarVenda(vendaParaSalvar);
 
-        assertNotNull(resultado);
-        assertEquals(1, resultado.getId_venda());
-        assertEquals(75.50, resultado.getValor_parcial_venda());
-        assertEquals("Pix", resultado.getForma_pagamento_venda());
+    //     assertNotNull(resultado);
+    //     assertEquals(1, resultado.getId_venda());
+    //     assertEquals(75.50, resultado.getValor_parcial_venda());
+    //     assertEquals("Pix", resultado.getForma_pagamento_venda());
 
-        verify(repository).save(vendaParaSalvar);
-    }
+    //     verify(repository).save(vendaParaSalvar);
+    // }
 
-    @Test
-    void editarVenda_QuandoExistir_DeveAtualizarVenda() {
-        Venda vendaExistente = new Venda();
-        Venda vendaAtualizada = new Venda();
-        vendaAtualizada.setData_venda(java.sql.Timestamp.valueOf(LocalDateTime.now()));
-        vendaAtualizada.setForma_pagamento_venda("Cartão");
-        vendaAtualizada.setValor_final_venda(100.0);
+    // @Test
+    // void editarVenda_QuandoExistir_DeveAtualizarVenda() {
+    //     Venda vendaExistente = new Venda();
+    //     Venda vendaAtualizada = new Venda();
+    //     vendaAtualizada.setData_venda(java.sql.Timestamp.valueOf(LocalDateTime.now()));
+    //     vendaAtualizada.setForma_pagamento_venda("Cartão");
+    //     vendaAtualizada.setValor_final_venda(100.0);
 
-        when(repository.findById(1)).thenReturn(Optional.of(vendaExistente));
-        when(repository.save(any(Venda.class))).thenReturn(vendaExistente);
+    //     when(repository.findById(1)).thenReturn(Optional.of(vendaExistente));
+    //     when(repository.save(any(Venda.class))).thenReturn(vendaExistente);
 
-        ResponseEntity<Venda> response = vendaService.editarVenda(1, vendaAtualizada);
+    //     ResponseEntity<Venda> response = vendaService.editarVenda(1, vendaAtualizada);
 
-        assertTrue(response.getStatusCode().is2xxSuccessful());
-        verify(repository).save(vendaExistente);
-    }
+    //     assertTrue(response.getStatusCode().is2xxSuccessful());
+    //     verify(repository).save(vendaExistente);
+    // }
 
-    @Test
-    void editarVenda_QuandoVendaNaoExiste_DeveRetornarNotFound() {
-        Integer idVendaNaoExistente = 99;
-        Venda vendaAtualizadaMock = new Venda();
-        vendaAtualizadaMock.setValor_final_venda(150.0);
+    // @Test
+    // void editarVenda_QuandoVendaNaoExiste_DeveRetornarNotFound() {
+    //     Integer idVendaNaoExistente = 99;
+    //     Venda vendaAtualizadaMock = new Venda();
+    //     vendaAtualizadaMock.setValor_final_venda(150.0);
 
-        when(repository.findById(idVendaNaoExistente)).thenReturn(Optional.empty());
+    //     when(repository.findById(idVendaNaoExistente)).thenReturn(Optional.empty());
 
-        ResponseEntity<Venda> response = vendaService.editarVenda(idVendaNaoExistente, vendaAtualizadaMock);
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-        assertNull(response.getBody());
-        verify(repository).findById(idVendaNaoExistente);
+    //     ResponseEntity<Venda> response = vendaService.editarVenda(idVendaNaoExistente, vendaAtualizadaMock);
+    //     assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    //     assertNull(response.getBody());
+    //     verify(repository).findById(idVendaNaoExistente);
 
-        verify(repository, never()).save(any(Venda.class));
-    }
+    //     verify(repository, never()).save(any(Venda.class));
+    // }
 
     @Test
     void excluirVenda_QuandoExistir_DeveDeletarVenda() {

@@ -20,7 +20,7 @@ import br.com.tavernadovale.tavernadovale.service.ProdutoService;
 
 @RestController
 @CrossOrigin({"*"})
-@RequestMapping({"/produto"}) // CORREÇÃO: Padronizado com o prefixo /api
+@RequestMapping({"/produto"})
 public class ProdutoController {
 
     @Autowired

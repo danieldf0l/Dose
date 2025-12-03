@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link rel="stylesheet" href="./styles/vendas.css">
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/media.css">
-    <script src="scripts/venda.js" defer></script> 
+    <script src="scripts/venda.js" defer></script>
 </head>
+
 <body>
 
     <div vw class="enabled">
@@ -68,20 +70,20 @@
         <p class="txt_expl">
             Na página de Vendas do nosso site, você encontrará campos simples para facilitar seu registro:
             Preencha o Valor Parcial, insira o Valor Final, escolha a forma de pagamento (Pix,
-            Dinheiro, Crédito, Débito) e indique a data da venda. 
+            Dinheiro, Crédito, Débito) e indique a data da venda.
         </p>
-        
-        <form class="campos_vnds" id="form-venda"> 
-            
+
+        <form class="campos_vnds" id="form-venda">
+
             <h3>Detalhes da Transação</h3>
             <div class="campos_cima">
                 <label for="valor-parcial">Valor Parcial</label>
                 <input type="text" id="valor-parcial" name="valor-parcial" placeholder="R$ 0,00" required>
-                
+
                 <label for="valor-final">Valor Final</label>
                 <input type="text" id="valor-final" name="valor-final" placeholder="R$ 0,00" required>
             </div>
-            
+
             <div class="campos_baixo">
                 <label for="forma-pagamento">Forma de Pagamento</label>
                 <select id="forma-pagamento" name="forma-pagamento" required>
@@ -91,28 +93,29 @@
                     <option value="Crédito">Crédito</option>
                     <option value="Débito">Débito</option>
                 </select>
-                
+
                 <label for="data_venda">Data</label>
                 <input type="date" id="data_venda" name="data_venda" required>
             </div>
-            
+
             <hr>
-            
-            <h3>Adicionar Item Vendido ➕</h3>
+
+            <h3>Adicionar Item Vendido</h3>
             <div class="adicionar-item">
-                <label for="select-produto">Produto:</label>
-                <select id="select-produto" required>
-                    <option value="">Selecione o Produto</option>
-                    </select>
-                
+                <!-- No lugar do select de produto -->
+                <label for="input-ean">Código de Barras (EAN):</label>
+                <input type="text" id="input-ean" name="input-ean" placeholder="Digite o código de barras">
+                <button type="button" id="btn-buscar-produto">Buscar Produto</button>
+
+                <!-- Mantenha o select de lote (agora será preenchido após buscar o produto) -->
                 <label for="select-lote">Lote (Estoque):</label>
                 <select id="select-lote" required disabled>
-                    <option value="">Selecione o Lote</option>
-                    </select>
-                
+                    <option value="">Primeiro busque um produto</option>
+                </select>
+
                 <label for="input-quantidade">Qtd:</label>
                 <input type="number" id="input-quantidade" placeholder="1" min="1" required>
-                
+
                 <button type="button" id="btn-adicionar-item">Adicionar à Venda</button>
             </div>
 
@@ -126,14 +129,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    </tbody>
+                </tbody>
             </table>
-            
+
             <br>
-            
+
             <button type="submit" class="btn_slv_vnds">Finalizar Venda e Dar Baixa no Estoque</button>
         </form>
     </main>
     <footer></footer>
 </body>
+
 </html>

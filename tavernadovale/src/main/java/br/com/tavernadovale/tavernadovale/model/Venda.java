@@ -1,46 +1,34 @@
 package br.com.tavernadovale.tavernadovale.model;
 
-import java.sql.Timestamp;
-import java.util.List; // Import para a lista de itens da venda
+import java.time.LocalDateTime;
+import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.CascadeType; // Novo import necessário
-import jakarta.persistence.OneToMany;   // Novo import necessário
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "venda")
 public class Venda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_venda", nullable = true)
-    protected int id_venda;
-    
-    @Column(name = "valor_parcial", nullable = true)
-    protected double valor_parcial_venda;
-    
-    @Column(name = "valor_final", nullable = true)
-    protected double valor_final_venda;
-    
-    @Column(name = "forma_pagamento", length = 45, nullable = true)
-    protected String forma_pagamento_venda;
-    
-    @Column(name = "data_venda", nullable = true)
-    protected Timestamp data_hora_venda;
+    private int id_venda;
 
-    // NOVO CAMPO: Lista de itens da venda
-    // Mapeamento OneToMany: Uma Venda tem Múltiplos ProdutosVenda.
-    // mappedBy="venda": Indica que a chave estrangeira (fk_id_venda) está na classe ProdutosVenda.
-    // cascade=CascadeType.ALL: Garante que, ao salvar a Venda, seus ProdutosVenda também sejam salvos (ou deletados).
+    private String nome_cliente;
+    private String cpf_cliente;
+    private double valor_total_venda;
+    private boolean pago;
+
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private LocalDateTime dataHoraVenda;
+
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ProdutosVenda> produtosVenda;
 
-    // --- Getters e Setters Existentes ---
+
+    // GETTERS E SETTERS
 
     public int getId_venda() {
         return id_venda;
@@ -50,41 +38,46 @@ public class Venda {
         this.id_venda = id_venda;
     }
 
-    public double getValor_parcial_venda() {
-        return valor_parcial_venda;
+    public String getNome_cliente() {
+        return nome_cliente;
     }
 
-    public void setValor_parcial_venda(double valor) {
-        this.valor_parcial_venda = valor;
+    public void setNome_cliente(String nome_cliente) {
+        this.nome_cliente = nome_cliente;
     }
 
-    public double getValor_final_venda() {
-        return valor_final_venda;
+    public String getCpf_cliente() {
+        return cpf_cliente;
     }
 
-    public void setValor_final_venda(double valor_final) {
-        this.valor_final_venda = valor_final;
+    public void setCpf_cliente(String cpf_cliente) {
+        this.cpf_cliente = cpf_cliente;
     }
 
-    public String getForma_pagamento_venda() {
-        return forma_pagamento_venda;
+    public double getValor_total_venda() {
+        return valor_total_venda;
     }
 
-    public void setForma_pagamento_venda(String forma_pagamento_venda) {
-        this.forma_pagamento_venda = forma_pagamento_venda;
+    public void setValor_total_venda(double valor_total_venda) {
+        this.valor_total_venda = valor_total_venda;
     }
 
-    public Timestamp getData_hora_venda() {
-        return data_hora_venda;
+    public boolean isPago() {
+        return pago;
     }
 
-    // Corrigindo o nome do método para data_hora_venda para consistência, se necessário
-    public void setData_venda(Timestamp data_hora_venda) {
-        this.data_hora_venda = data_hora_venda;
+    public void setPago(boolean pago) {
+        this.pago = pago;
     }
 
-    // --- Novos Getters e Setters para a Lista de Itens ---
-    
+    public LocalDateTime getDataHoraVenda() {
+        return dataHoraVenda;
+    }
+
+    public void setDataHoraVenda(LocalDateTime dataHoraVenda) {
+        this.dataHoraVenda = dataHoraVenda;
+    }
+
     public List<ProdutosVenda> getProdutosVenda() {
         return produtosVenda;
     }
