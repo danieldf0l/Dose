@@ -55,4 +55,8 @@ public class VendaService {
         repository.deleteById(idVenda);
         return venda;
     }
+
+    public Venda salvar(Venda v) {
+    return repository.save(v);
+    }
 }

@@ -35,7 +35,7 @@ public class VendaController {
     public ResponseEntity<Venda> buscarPorId(@PathVariable int id) {
         return service.buscarPorId(id);
     }
-    
+
     @PostMapping
     public Venda criarVenda(@RequestBody Venda venda) {
         return service.criarVenda(venda);
@@ -47,7 +47,7 @@ public class VendaController {
     }
 
     @DeleteMapping("/{id}")
-    public Optional<Venda> exlcuirVenda(@PathVariable("id") Integer idVenda) {
+    public Optional<Venda> excluirVenda(@PathVariable("id") Integer idVenda) {
         return service.exlcuirVenda(idVenda);
     }
 }
