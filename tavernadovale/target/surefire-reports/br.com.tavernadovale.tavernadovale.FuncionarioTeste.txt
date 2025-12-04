@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: br.com.tavernadovale.tavernadovale.FuncionarioTeste
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.150 s <<< FAILURE! -- in br.com.tavernadovale.tavernadovale.FuncionarioTeste
+br.com.tavernadovale.tavernadovale.FuncionarioTeste.testarCadastroFuncionario -- Time elapsed: 5.126 s <<< ERROR!
+java.lang.RuntimeException: 
+Erro ao executar teste Selenium: element click intercepted: Element <button type="button" class="btn_slv_funcn">...</button> is not clickable at point (1014, 670). Other element would receive the click: <footer></footer>
+  (Session info: chrome=142.0.7444.176)
+Build info: version: '4.14.1', revision: '03f8ede370'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.3'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [f43442582c71a12386726f2e0b86e487, clickElement {id=f.CFD491DE43F077FD26DDF6658C36E47E.d.685E8B4F9DE016C3400728AF6442A95D.e.28}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 142.0.7444.176, chrome: {chromedriverVersion: 142.0.7444.175 (302067f14a4..., userDataDir: C:\Users\df0l\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57338}, goog:processID: 24880, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57338/devtoo..., se:cdpVersion: 142.0.7444.176, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (f43442582c71a12386726f2e0b86e487)] -> css selector: .btn_slv_funcn]
+Session ID: f43442582c71a12386726f2e0b86e487
+	at br.com.tavernadovale.tavernadovale.FuncionarioTeste.testarCadastroFuncionario(FuncionarioTeste.java:75)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
