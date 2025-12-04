@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -25,7 +26,7 @@ public class EstoqueTeste {
     @Test
     public void testarCadastroEstoque() {
         try {
-            driver.get("file:///CAMINHO/estoque.html");
+            driver.get("file:///C:/Users/Larry/Desktop/Dose/Front%20-%20PI/estoque.html");
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.presenceOfElementLocated(By.className("campos_estq")));
@@ -54,6 +55,8 @@ public class EstoqueTeste {
             campoLote.sendKeys("1231298371lkglkjh");
             Thread.sleep(500);
             System.out.println("Lote preenchido.");
+            
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
 
             WebElement botaoSalvar = driver.findElement(By.cssSelector(".btn_slv_estq"));
             botaoSalvar.click();

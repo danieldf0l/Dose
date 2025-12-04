@@ -25,7 +25,7 @@ public class ProdutoTeste {
     @Test
     public void testarCadastroProduto() {
         try {
-            driver.get("file:///CAMINHO/produtos.html");
+            driver.get("file:///C:/Users/Larry/Desktop/Dose/Front%20-%20PI/produtos.html");
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.presenceOfElementLocated(By.className("campos_prdts")));
